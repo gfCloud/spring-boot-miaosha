@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qixin.mapper.MiaoShaUserMapper">
+	<resultMap id="UserInfoMap" type="com.qixin.entity.MiaoShaUser">
+		<result column="id" property="id" />
+		<result column="nickname" property="nickname" />
+		<result column="salt" property="salt" />
+		<result column="head" property="head" />
+		<result column="register_date" property="registerdate" />
+		<result column="last_login_date" property="lastlogindate" />
+		<result column="login_count" property="logincount" />
+	</resultMap>
+
+	<select id="getbyID" parameterType="java.lang.String"
+		resultType="com.qixin.entity.MiaoShaUser">
+		select * from miaosha_user where id = #{id}
+	</select>
+
+</mapper>
+
+

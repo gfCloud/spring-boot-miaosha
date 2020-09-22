@@ -1,0 +1,43 @@
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  congiguration:
+    default-feth-size: 100
+    default-statement-timeout: 3000
+  mapperLocations: classpath:com/qixin/mapper/*.xml
+mybatis-type-aliases-package: com.qixin.entity
+redis:
+  host: 127.0.0.1
+  password: 123456
+  poolMaxTotal: 10
+  poolMaxWait: 3
+  poolMaxdle: 10
+  port: 6379
+  timeout: 30000
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    filters: stat
+    initialSize: 1
+    maxActive: 3
+    maxOpenPreparedStatements: 20
+    minEvictableldleTimeMillis: 30000
+    password: ''
+    poolPreparedStatements: true
+    testOnBrrow: false
+    testOnReturn: false
+    testWhiledle: true
+    timeBetweenEvictionRunMillis: 60000
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://127.0.0.1:3306/miaosha?useUnicode=true&characterEncoding=utf-8
+    username: root
+    validationQuery: select 'x'
+  thymeleaf:
+    cache: false
+    content-type: text/html
+    enable: true
+    encoding: UTF-8
+    prefix: classpath:/templates/
+    suffix: .html
+  thymelesf:
+    mode: html5

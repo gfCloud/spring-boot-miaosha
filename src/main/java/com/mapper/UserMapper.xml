@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qixin.mapper.UserMapper">
+	<resultMap id="UserInfoMap" type="com.qixin.entity.LoginVo">
+		<result column="id" property="id" />
+		<result column="name" property="name" />
+	</resultMap>
+
+	<select id="getbyID" parameterType="java.lang.Integer"
+		resultType="com.qixin.entity.LoginVo">
+		select * from user where id = #{id}
+	</select>
+
+	<insert id="InsertUser" parameterType="com.qixin.entity.LoginVo">
+		insert into user(id,name) value (#{id},#{name})
+	</insert>
+
+
+</mapper>
+
+
