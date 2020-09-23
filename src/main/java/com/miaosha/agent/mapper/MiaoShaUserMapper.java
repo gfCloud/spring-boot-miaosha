@@ -7,6 +7,6 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface MiaoShaUserMapper {
 
-	public MiaoShaUser getbyID(@Param("id") String id);
+	MiaoShaUser getbyID(@Param("id") String id);
 	
 }

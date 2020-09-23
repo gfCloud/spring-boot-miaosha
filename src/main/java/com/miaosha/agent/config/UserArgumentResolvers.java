@@ -1,10 +1,8 @@
 package com.miaosha.agent.config;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import com.alibaba.druid.util.StringUtils;
 import com.miaosha.agent.entity.MiaoShaUser;
+import com.miaosha.agent.service.MiaoshaUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Service;
@@ -13,11 +11,13 @@ import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.method.support.ModelAndViewContainer;
 
-import com.alibaba.druid.util.StringUtils;
-import com.miaosha.agent.service.MiaoshaUserService;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Service
 public class UserArgumentResolvers implements HandlerMethodArgumentResolver {
+	public static final String COOKIE_NAME_TOKEN = "token";
 
 	@Autowired
 	MiaoshaUserService userservice;
@@ -33,9 +33,9 @@ public class UserArgumentResolvers implements HandlerMethodArgumentResolver {
 			NativeWebRequest webRequest, WebDataBinderFactory binderFactory) throws Exception {
 		HttpServletRequest request = webRequest.getNativeRequest(HttpServletRequest.class);
 		HttpServletResponse response = webRequest.getNativeResponse(HttpServletResponse.class);
-		String paramToken = request.getParameter(MiaoshaUserService.COOKIE_NAME_TOKEN);
+		String paramToken = request.getParameter(COOKIE_NAME_TOKEN);
 		Cookie[] paramTokens = request.getCookies();
-		String cookieToken = getCookieValue(request, MiaoshaUserService.COOKIE_NAME_TOKEN);
+		String cookieToken = getCookieValue(request, COOKIE_NAME_TOKEN);
 		if (StringUtils.isEmpty(cookieToken) && StringUtils.isEmpty(paramToken)) {
 			return null;
 		}
