@@ -3,8 +3,8 @@ package com.miaosha.agent.validator;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import com.miaosha.agent.service.Validation_mobile;
 import com.alibaba.druid.util.StringUtils;
+import com.miaosha.agent.service.impl.Validation_mobile;
 
 public class IsmobileValidator implements ConstraintValidator<IsMobile,String> {
 

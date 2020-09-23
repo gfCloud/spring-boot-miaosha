@@ -20,7 +20,7 @@ public class LoginController {
 	private static Logger log = LoggerFactory.getLogger(LoginController.class);
 	
 	@Autowired
-    MiaoshaUserService userservice;
+	MiaoshaUserService userservice;
 	
 	@RequestMapping("/tologin")
 	public String toLogin(){

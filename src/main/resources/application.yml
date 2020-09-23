@@ -4,16 +4,16 @@ mybatis:
   congiguration:
     default-feth-size: 100
     default-statement-timeout: 3000
-  mapperLocations: classpath:com/qixin/mapper/*.xml
-mybatis-type-aliases-package: com.qixin.entity
+  mapperLocations: classpath:mapper/*.xml
+  type-aliases-package: com.miaosha.agent.entity
 redis:
   host: 127.0.0.1
-  password: 123456
-  poolMaxTotal: 10
-  poolMaxWait: 3
-  poolMaxdle: 10
+#  password: 123456
+  poolMaxTotal: 8
+  poolMaxWait: 1000
+  poolMaxdle: 8
   port: 6379
-  timeout: 30000
+  timeout: 6
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
@@ -22,14 +22,14 @@ spring:
     maxActive: 3
     maxOpenPreparedStatements: 20
     minEvictableldleTimeMillis: 30000
-    password: ''
+    password: 123456
     poolPreparedStatements: true
     testOnBrrow: false
     testOnReturn: false
     testWhiledle: true
     timeBetweenEvictionRunMillis: 60000
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://127.0.0.1:3306/miaosha?useUnicode=true&characterEncoding=utf-8
+    url: jdbc:mysql://localhost:3306/miaosha?rewriteBatchedStatements=true&useUnicode=true&characterEncoding=UTF-8&generateSimpleParameterMetadata=true&autoReconnect=true&useSSL=false&serverTimezone=GMT%2b8&allowMultiQueries=true
     username: root
     validationQuery: select 'x'
   thymeleaf:

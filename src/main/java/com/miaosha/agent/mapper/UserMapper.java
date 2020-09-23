@@ -1,9 +1,8 @@
 package com.miaosha.agent.mapper;
 
+import com.miaosha.agent.entity.LoginVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
-
-import com.miaosha.agent.entity.LoginVo;
 
 @Mapper
 public interface UserMapper {

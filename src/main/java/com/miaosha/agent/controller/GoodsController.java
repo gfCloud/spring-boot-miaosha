@@ -17,10 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class GoodsController {
 	
 	@Autowired
-    MiaoshaUserService userservice;
+	MiaoshaUserService userservice;
 	
 	@Autowired
-    GoodsService goodsService;
+	GoodsService goodsService;
 	
 	@RequestMapping("/to_list")
 	public String to_List(Model model, MiaoShaUser user){
