@@ -9,6 +9,8 @@ import com.miaosha.agent.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -22,7 +24,7 @@ public class TemplatesController {
 	@Autowired
     RedisService redisSvice;
 
-	@RequestMapping("/thymeleaf")
+	@GetMapping("/thymeleaf")
 	public String thymeleaf(Model model, int id) {
 		LoginVo user = userservice.getByID(id);
 		model.addAttribute("id", user.getId());
@@ -30,27 +32,27 @@ public class TemplatesController {
 		return "demo";
 	}
 
-	@RequestMapping("/success")
+	@GetMapping("/success")
 	@ResponseBody
 	public Result<String> success() {
 		return Result.success("seccess成功返回");
 	}
 
-	@RequestMapping("/error")
+	@GetMapping("/error")
 	@ResponseBody
 	public Result<String> error() {
 		return Result.error(CodeMsg.SERVER_ERROR);
 	}
 
-	@RequestMapping("/get")
+	@GetMapping("/get")
 	@ResponseBody
 	public LoginVo getByid(int id) {
 		return userservice.getByID(id);
 	}
 
-	@RequestMapping("/Insert")
+	@PostMapping("/insert")
 	@ResponseBody
-	public Result<String> InsertUser(int id, String name) throws Exception {
+	public Result<String> insertUser(int id, String name) {
 		LoginVo user = new LoginVo();
 		user.setId(id);
 		user.setName(name);
@@ -62,7 +64,7 @@ public class TemplatesController {
 		}
 	}
 
-	@RequestMapping("/RedisSet")
+	@GetMapping("/RedisSet")
 	@ResponseBody
 	public Result<Boolean> redisSetTest(String str, String value) {
 		LoginVo user = new LoginVo();
@@ -72,7 +74,7 @@ public class TemplatesController {
 		return Result.success(flag);
 	}
 
-	@RequestMapping("/RedisGet")
+	@GetMapping("/RedisGet")
 	@ResponseBody
 	public Result<LoginVo> redisGetTestUser(String str) {
 		LoginVo user = redisSvice.get(UserKey.getById, str, LoginVo.class);
