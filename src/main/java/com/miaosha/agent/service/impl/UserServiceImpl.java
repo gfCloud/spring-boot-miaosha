@@ -8,8 +8,6 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.annotation.Resource;
-
 @Slf4j
 @Service
 public class UserServiceImpl implements UserService {
@@ -23,18 +21,24 @@ public class UserServiceImpl implements UserService {
 
 
 	@Override
-	public LoginVo getByID(int id) {
+	public LoginVo getById(int id) {
 		return usermapper.getbyID(id);
 	}
-	
+
+	/**
+	 * 新增用户
+	 *
+	 * @param user 用户信息
+	 * @return 成功返回1
+	 */
 	@Override
-	@Transactional
-	public int InsertUser (LoginVo user){
-		int temp = 0;
-		try{
+	@Transactional(rollbackFor = DuplicateKeyException.class)
+	public int insertUser(LoginVo user) {
+		int temp;
+		try {
 			temp = usermapper.InsertUser(user);
-		}catch(DuplicateKeyException de){
-			System.out.println("主键冲突->DuplicateKeyException");
+		} catch (DuplicateKeyException de) {
+			throw de;
 		}
 		return temp;
 	}

@@ -4,12 +4,16 @@ import com.miaosha.agent.entity.GoodsVo;
 import com.miaosha.agent.mapper.GoodsMapper;
 import com.miaosha.agent.service.GoodsService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
+/**
+ * goods
+ *
+ * @author gaoFan
+ * @date 2020/9/23
+ **/
 @Slf4j
 @Service
 public class GoodsServiceImpl implements GoodsService {
@@ -22,7 +26,7 @@ public class GoodsServiceImpl implements GoodsService {
 	}
 
 	@Override
-	public List<GoodsVo> GoodsList() {
+	public List<GoodsVo> goodsList() {
 		return goodsmapper.listGoodsVo();
 	}
 	

@@ -6,7 +6,6 @@ import com.miaosha.agent.redis.UserKey;
 import com.miaosha.agent.result.CodeMsg;
 import com.miaosha.agent.result.Result;
 import com.miaosha.agent.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,19 +13,30 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
+
+/**
+ * demo
+ *
+ * @author gaoFan
+ * @date 2020/9/23
+ **/
 @Controller
 @RequestMapping("/demo")
 public class TemplatesController {
 
-	@Autowired
-	private UserService userservice;
+	@Resource
+	private final UserService userservice;
+	private final RedisService redisSvice;
 
-	@Autowired
-    RedisService redisSvice;
+	public TemplatesController(UserService userservice, RedisService redisSvice) {
+		this.userservice = userservice;
+		this.redisSvice = redisSvice;
+	}
 
 	@GetMapping("/thymeleaf")
 	public String thymeleaf(Model model, int id) {
-		LoginVo user = userservice.getByID(id);
+		LoginVo user = userservice.getById(id);
 		model.addAttribute("id", user.getId());
 		model.addAttribute("name", user.getName());
 		return "demo";
@@ -47,7 +57,7 @@ public class TemplatesController {
 	@GetMapping("/get")
 	@ResponseBody
 	public LoginVo getByid(int id) {
-		return userservice.getByID(id);
+		return userservice.getById(id);
 	}
 
 	@PostMapping("/insert")
@@ -56,7 +66,7 @@ public class TemplatesController {
 		LoginVo user = new LoginVo();
 		user.setId(id);
 		user.setName(name);
-		int tmp = userservice.InsertUser(user);
+		int tmp = userservice.insertUser(user);
 		if (tmp == 1) {
 			return Result.success("插入成功");
 		} else {
