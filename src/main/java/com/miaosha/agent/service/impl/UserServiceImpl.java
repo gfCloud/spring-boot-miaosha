@@ -8,6 +8,12 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+/**
+ * 用户服务
+ *
+ * @author qiXin
+ * @date 2020/9/23
+ **/
 @Slf4j
 @Service
 public class UserServiceImpl implements UserService {

@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * goods class
  *
- * @author gaofan
+ * @author qiXin
  * @date 2020/09/23
  */
 @Controller

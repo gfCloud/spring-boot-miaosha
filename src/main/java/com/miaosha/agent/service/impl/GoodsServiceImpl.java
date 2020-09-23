@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * goods
  *
- * @author gaoFan
+ * @author qiXin
  * @date 2020/9/23
  **/
 @Slf4j

@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * 用户服务层
  *
- * @author gaoFan
+ * @author qiXin
  * @date 2020/9/23
  **/
 public interface MiaoshaUserService {

@@ -5,7 +5,7 @@ import com.miaosha.agent.entity.LoginVo;
 /**
  * 用户
  *
- * @author gaoFan
+ * @author qiXin
  * @date 2020/9/23
  **/
 public interface UserService {
