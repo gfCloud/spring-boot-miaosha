@@ -34,7 +34,6 @@ public class UserArgumentResolvers implements HandlerMethodArgumentResolver {
 		HttpServletRequest request = webRequest.getNativeRequest(HttpServletRequest.class);
 		HttpServletResponse response = webRequest.getNativeResponse(HttpServletResponse.class);
 		String paramToken = request.getParameter(COOKIE_NAME_TOKEN);
-		Cookie[] paramTokens = request.getCookies();
 		String cookieToken = getCookieValue(request, COOKIE_NAME_TOKEN);
 		if (StringUtils.isEmpty(cookieToken) && StringUtils.isEmpty(paramToken)) {
 			return null;

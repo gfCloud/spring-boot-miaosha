@@ -29,7 +29,11 @@ public class GoodsServiceImpl implements GoodsService {
 	public List<GoodsVo> goodsList() {
 		return goodsmapper.listGoodsVo();
 	}
-	
-	
+
+	@Override
+	public GoodsVo getGoodsVoByGoodsId(long goodsId) {
+		return goodsmapper.getGoodsVoByGoodsId(goodsId);
+	}
+
 
 }
