@@ -1,5 +1,7 @@
 package com.miaosha.agent.controller;
 
+import com.miaosha.agent.consts.CurrencyConsts;
+import com.miaosha.agent.dto.req.LoginUserDTO;
 import com.miaosha.agent.entity.LoginVo;
 import com.miaosha.agent.redis.RedisService;
 import com.miaosha.agent.redis.UserKey;
@@ -8,12 +10,10 @@ import com.miaosha.agent.result.Result;
 import com.miaosha.agent.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.validation.Valid;
 
 /**
  * demo
@@ -62,11 +62,8 @@ public class TemplatesController {
 
 	@PostMapping("/insert")
 	@ResponseBody
-	public Result<String> insertUser(int id, String name) {
-		LoginVo user = new LoginVo();
-		user.setId(id);
-		user.setName(name);
-		int tmp = userservice.insertUser(user);
+	public Result<String> insertUser(@RequestBody @Valid LoginUserDTO loginUserDTO) {
+		int tmp = userservice.insertUser(loginUserDTO);
 		if (tmp == 1) {
 			return Result.success("插入成功");
 		} else {
@@ -78,7 +75,7 @@ public class TemplatesController {
 	@ResponseBody
 	public Result<Boolean> redisSetTest(String str, String value) {
 		LoginVo user = new LoginVo();
-		user.setId(1);
+		user.setId(CurrencyConsts.ONE);
 		user.setName(value);
 		boolean flag = redisSvice.set(UserKey.getById, str, user);
 		return Result.success(flag);

@@ -16,7 +16,7 @@ redis:
   timeout: 6
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
     filters: stat
     initialSize: 1
     maxActive: 3

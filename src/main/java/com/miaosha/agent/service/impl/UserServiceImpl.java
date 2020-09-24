@@ -1,10 +1,10 @@
 package com.miaosha.agent.service.impl;
 
+import com.miaosha.agent.dto.req.LoginUserDTO;
 import com.miaosha.agent.entity.LoginVo;
 import com.miaosha.agent.mapper.UserMapper;
 import com.miaosha.agent.service.UserService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -34,19 +34,13 @@ public class UserServiceImpl implements UserService {
 	/**
 	 * 新增用户
 	 *
-	 * @param user 用户信息
+	 * @param loginUserDTO 用户信息
 	 * @return 成功返回1
 	 */
 	@Override
-	@Transactional(rollbackFor = DuplicateKeyException.class)
-	public int insertUser(LoginVo user) {
-		int temp;
-		try {
-			temp = usermapper.InsertUser(user);
-		} catch (DuplicateKeyException de) {
-			throw de;
-		}
-		return temp;
+	@Transactional(rollbackFor = Exception.class)
+	public int insertUser(LoginUserDTO loginUserDTO) {
+		return usermapper.InsertUser(loginUserDTO);
 	}
 
 }
