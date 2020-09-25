@@ -44,8 +44,8 @@ public class GoodsController {
 		long endAt = goods.getEndDate().getTime();
 		long nowAt = System.currentTimeMillis();
 		//0 还没开始 1秒杀中 2秒杀结束
-		int miaoShaStatus = 0;
-		int remainSeconds = 0;
+		int miaoShaStatus;
+		int remainSeconds;
 		if(nowAt < startAt){
 			//秒杀还没开
 			miaoShaStatus = 0;
