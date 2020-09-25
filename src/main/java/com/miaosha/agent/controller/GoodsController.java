@@ -43,15 +43,19 @@ public class GoodsController {
 		long startAt = goods.getStartDate().getTime();
 		long endAt = goods.getEndDate().getTime();
 		long nowAt = System.currentTimeMillis();
-		int miaoShaStatus = 0;   //0 还没开始 1秒杀中 2秒杀结束
+		//0 还没开始 1秒杀中 2秒杀结束
+		int miaoShaStatus = 0;
 		int remainSeconds = 0;
-		if(nowAt < startAt){  //秒杀还没开始
+		if(nowAt < startAt){
+			//秒杀还没开
 			miaoShaStatus = 0;
 			remainSeconds = (int)(startAt - nowAt)/ 1000;
-		}else if(nowAt > endAt){ //秒杀已经结束
+		}else if(nowAt > endAt){
+			//秒杀已经结束
 			miaoShaStatus = 2;
 			remainSeconds = -1;
-		}else{  //秒杀中
+		}else{
+			//秒杀中
 			miaoShaStatus = 1;
 			remainSeconds = 0;
 		}

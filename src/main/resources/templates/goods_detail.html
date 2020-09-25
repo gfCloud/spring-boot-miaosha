@@ -38,13 +38,14 @@
 				<td>秒杀开始时间</td>
 				<td th:text="${#dates.format(goods.startDate,'yyyy-MM-dd HH:mm:ss')}"></td>
 			    <td id="miaoshaTip">
-					<span  th:if="miaoShaStatus == 0">秒杀倒计时：<span id="contdown">${remainSeconds}</span>秒</span>
-					<span  th:if="miaoShaStatus == 1">秒杀进行中</span>
-					<span  th:if="miaoShaStatus == 2">秒杀已结束</span>
+					<input type="hidden" id="remainSeconds" th:value="${remainSeconds}">
+					<span  th:if="${miaoShaStatus eq 0 }">秒杀倒计时：<span id="countdown" th:text="${remainSeconds}"></span>秒</span>
+					<span  th:if="${miaoShaStatus eq 1}">秒杀进行中</span>
+					<span  th:if="${miaoShaStatus eq 2}">秒杀已结束</span>
 				</td>
 				<td>
 					<form id="miaoshaForm" method="post" action="/miaosha/domiaosha">
-						<button class="btn btn-primary btn-block" type="submit" id="byButton"></button>
+						<button class="btn btn-primary btn-block" type="submit" id="byButton">立即秒杀</button>
 						<input type="hidden" name="goodsId" th:value="${goods.id}">
 					</form>
 				</td>
@@ -64,6 +65,34 @@
 		</table>
 	</div>
 </body>
+<script>
+	$(function(){
+		countDown()
+	});
+	function countDown(){
+		var remainSeconds = $("#remainSeconds").val();
+		var timeOut;
+		if(remainSeconds > 0){
+			$("#byButton").attr("disabled",true);
+			timeOut = setTimeout(function(){
+				$("#countdown").text(remainSeconds - 1);
+				$("#remainSeconds").val(remainSeconds - 1);
+				countDown();
+			},1000)
+		}else if(remainSeconds == 0){
+			$("#byButton").attr("disabled",false);
+			if(timeOut){
+				clearTimeout(timeOut);
+			}
+			$("#miaoshaTip").html("秒杀进行中")
+		}else{
+			$("#byButton").attr("disabled",false);
+			$("#miaoshaTip").html("秒杀已经结束")
+		}
+	};
+
+
+</script>
 <script>
 </script>
 </html>
