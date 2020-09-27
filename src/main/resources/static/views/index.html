@@ -27,6 +27,11 @@
               <i class="layui-icon layui-icon-shrink-right" id="LAY_app_flexible"></i>
             </a>
           </li>
+          <li class="layui-nav-item layui-hide-xs" lay-unselect>
+            <a href="http://www.layui.com/admin/" target="_blank" title="前台">
+              <i class="layui-icon layui-icon-website"></i>
+            </a>
+          </li>
           <li class="layui-nav-item" lay-unselect>
             <a href="javascript:;" layadmin-event="refresh" title="刷新">
               <i class="layui-icon layui-icon-refresh-3"></i>
@@ -39,7 +44,7 @@
         <ul class="layui-nav layui-layout-right" lay-filter="layadmin-layout-right">
           
           <li class="layui-nav-item" lay-unselect>
-            <a lay-href="/views/app/message/index.html" layadmin-event="message" lay-text="消息中心">
+            <a lay-href="app/message/index.html" layadmin-event="message" lay-text="消息中心">
               <i class="layui-icon layui-icon-notice"></i>  
               
               <!-- 如果有新消息，则显示小圆点 -->
@@ -97,13 +102,13 @@
               </a>
               <dl class="layui-nav-child">
                 <dd data-name="console" class="layui-this">
-                  <a lay-href="/views/home/console.html">控制台</a>
+                  <a lay-href="/templates/views/home/console.html">控制台</a>
                 </dd>
                 <dd data-name="console">
-                  <a lay-href="/goods/toList">商品列表</a>
+                  <a lay-href="views/home/homepage1.html">主页一</a>
                 </dd>
                 <dd data-name="console">
-                  <a lay-href="/views/home/homepage2.html">主页二</a>
+                  <a lay-href="views/home/homepage2.html">主页二</a>
                 </dd>
               </dl>
             </li>
