@@ -8,5 +8,4 @@ public class MiaoshaOrder {
 	private Long userld;
 	private Long orderid;
 	private Long goodsld;
-
 }

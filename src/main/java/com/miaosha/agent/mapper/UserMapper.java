@@ -5,11 +5,15 @@ import com.miaosha.agent.entity.LoginVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+/**
+ * @author qixin
+ *
+ */
 @Mapper
 public interface UserMapper {
 
-	LoginVo getbyID(@Param("id") int id);
-	
-	int InsertUser(LoginUserDTO loginUserDTO);
+    LoginVo getbyID(@Param("id") int id);
+
+    int InsertUser(LoginUserDTO loginUserDTO);
 
 }

@@ -92,6 +92,12 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.38</version>
         </dependency>
+        <!--判断用户下单设备-->
+        <dependency>
+            <groupId>eu.bitwalker</groupId>
+            <artifactId>UserAgentUtils</artifactId>
+            <version>1.21</version>
+        </dependency>
 
         <!-- MD5  MDS工具类  MD5Util -->
         <dependency>

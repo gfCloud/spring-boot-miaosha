@@ -1,6 +1,7 @@
 package com.miaosha.agent.service.impl;
 
 import com.miaosha.agent.entity.GoodsVo;
+import com.miaosha.agent.entity.MiaoshaGoods;
 import com.miaosha.agent.mapper.GoodsMapper;
 import com.miaosha.agent.service.GoodsService;
 import lombok.extern.slf4j.Slf4j;
@@ -33,6 +34,14 @@ public class GoodsServiceImpl implements GoodsService {
 	@Override
 	public GoodsVo getGoodsVoByGoodsId(long goodsId) {
 		return goodsmapper.getGoodsVoByGoodsId(goodsId);
+	}
+
+	@Override
+	public void reduceStock(GoodsVo goods) {
+		MiaoshaGoods good = new MiaoshaGoods();
+		good.setGoodsid(goods.getId());
+		good.setStockCount(goods.getStockCount() - 1);
+		goodsmapper.reduceStock(good);
 	}
 
 

@@ -25,4 +25,11 @@ public interface GoodsService {
      * @return goods列表
      */
     GoodsVo getGoodsVoByGoodsId(long goodsId);
+
+    /**
+     * 根据id查询商品详细信息
+     * @param goods 商品
+     * @return GoodsVo
+     */
+    void reduceStock(GoodsVo goods);
 }

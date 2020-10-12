@@ -13,7 +13,7 @@ import java.util.Date;
 public class MiaoShaUser {
     @NotBlank(message = "ID不能为空")
     @IsMobile
-    private String id;
+    private Long id;
     private String nickname;
     @NotBlank(message = "密码不能为空")
     @Length(min = 6, message = "密码长度错误")

@@ -18,29 +18,28 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class UserServiceImpl implements UserService {
 
-	private final UserMapper usermapper;
+    private final UserMapper usermapper;
 
-	@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-	public UserServiceImpl(UserMapper usermapper) {
-		this.usermapper = usermapper;
-	}
+    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
+    public UserServiceImpl(UserMapper usermapper) {
+        this.usermapper = usermapper;
+    }
 
+    @Override
+    public LoginVo getById(int id) {
+        return usermapper.getbyID(id);
+    }
 
-	@Override
-	public LoginVo getById(int id) {
-		return usermapper.getbyID(id);
-	}
-
-	/**
-	 * 新增用户
-	 *
-	 * @param loginUserDTO 用户信息
-	 * @return 成功返回1
-	 */
-	@Override
-	@Transactional(rollbackFor = Exception.class)
-	public int insertUser(LoginUserDTO loginUserDTO) {
-		return usermapper.InsertUser(loginUserDTO);
-	}
+    /**
+     * 新增用户
+     *
+     * @param loginUserDTO 用户信息
+     * @return 成功返回1
+     */
+    @Override
+    @Transactional(rollbackFor = Exception.class)
+    public int insertUser(LoginUserDTO loginUserDTO) {
+        return usermapper.InsertUser(loginUserDTO);
+    }
 
 }
