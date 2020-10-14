@@ -39,7 +39,7 @@ public class GoodsServiceImpl implements GoodsService {
 	@Override
 	public void reduceStock(GoodsVo goods) {
 		MiaoshaGoods good = new MiaoshaGoods();
-		good.setGoodsid(goods.getId());
+		good.setGoodsId(goods.getId());
 		good.setStockCount(goods.getStockCount() - 1);
 		goodsmapper.reduceStock(good);
 	}

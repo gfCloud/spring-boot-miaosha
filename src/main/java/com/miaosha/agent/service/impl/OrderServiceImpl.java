@@ -9,6 +9,7 @@ import com.miaosha.agent.service.OrderService;
 import com.miaosha.agent.until.OrderStatus;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 
@@ -36,11 +37,12 @@ public class OrderServiceImpl  implements OrderService {
     }
 
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public Orderinfo createOrder(MiaoShaUser user, GoodsVo goods) {
         Orderinfo orderinfo = new Orderinfo();
         Date date = new Date();
-        orderinfo.setUserid(user.getId());
-        orderinfo.setGoodsid(goods.getId());
+        orderinfo.setUserId(user.getId());
+        orderinfo.setGoodsId(goods.getId());
         orderinfo.setGoodsName(goods.getGoodsName());
         orderinfo.setGoodsCount(goods.getGoodsStock());
         orderinfo.setGoodsPrice(goods.getMiaoshaPrice());
@@ -48,9 +50,14 @@ public class OrderServiceImpl  implements OrderService {
         //订单状态,0新建未支付,1已支付, 2已发货,3已收货,4已退款,5已完成
         orderinfo.setStatus(OrderStatus.CreateOutstandingPayment.orderStatus());
         orderinfo.setOrderChannel(2);
-        orderinfo.setDeliveryAddrild(0L);
-        int id = orderMapper.createOrder(orderinfo);
-
-        return ""
+        orderinfo.setDeliverryAddrId(0L);
+        Long orderId = orderMapper.createOrder(orderinfo);
+        orderinfo.setId(orderId);
+        MiaoshaOrder miaoshaOrder = new MiaoshaOrder();
+        miaoshaOrder.setOrderId(orderId);
+        miaoshaOrder.setGoodsId(goods.getId());
+        miaoshaOrder.setUserId(user.getId());
+        orderMapper.insertOrderInfo(miaoshaOrder);
+        return orderinfo;
     }
 }

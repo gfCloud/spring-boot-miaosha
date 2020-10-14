@@ -24,7 +24,7 @@
 	</select>
 
 	<update id="reduceStock" parameterType="map">
-		update miaosha_goods a SET a.stock_count =#{stockCount}  where good_id =#{goodsId}
+		update miaosha_goods a SET a.stock_count =#{stockCount}  where goods_id =#{goodsId}
 	</update>
 
 

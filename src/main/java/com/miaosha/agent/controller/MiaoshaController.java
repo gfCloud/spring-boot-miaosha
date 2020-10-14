@@ -45,6 +45,7 @@ public class MiaoshaController {
         int stock = goods.getStockCount();
         if (stock <= 0) {
             model.addAttribute("errmsg", CodeMsg.MIAO_SHA_OVER.getMsg());
+            new Exception(CodeMsg.MIAO_SHA_OVER.getMsg());
             return "miaosha_fail";
         }
 
@@ -52,15 +53,15 @@ public class MiaoshaController {
         MiaoshaOrder order = orderService.getMiaoshaOrderByUserIdGoodsId(user.getId(), goodsId);
         if (order != null) {
             model.addAttribute("errmsg", CodeMsg.REPETA_MIAOSHA.getMsg());
-            return "miaosha_fail";
+            return "miaosha/miaosha_fail";
         }
 
         //减库存 下订单 写入秒杀订单
         //返回生成的订单
         Orderinfo orderinfo = miaoshaService.getmiaosha(user, goods);
-        model.addAttribute("orderinfo", orderinfo);
+        model.addAttribute("orderInfo", orderinfo);
         model.addAttribute("goods", goods);
-        return "order_detail";
+        return "order/order_detail";
 
 
     }

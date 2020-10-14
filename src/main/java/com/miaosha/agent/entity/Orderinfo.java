@@ -10,15 +10,15 @@ public class Orderinfo {
     /**
      * 用户id
      */
-    private Long userid;
+    private Long userId;
     /**
      * 商品id
      */
-    private Long goodsid;
+    private Long goodsId;
     /**
      * 收货地址id
      */
-    private Long deliveryAddrild;
+    private Long deliverryAddrId;
     /**
      * 商品名称
      */

@@ -32,7 +32,7 @@ public class GoodsController {
 		model.addAttribute("user",  user);
 		List<GoodsVo> goodsList = goodsService.goodsList();
 		model.addAttribute("goodsList", goodsList);
-		return "goods_list";
+		return "goods/goods_list";
 	}
 
 	@GetMapping("/toDetail/{goodsId}")
@@ -61,7 +61,7 @@ public class GoodsController {
 		}
 		model.addAttribute("miaoShaStatus",  miaoShaStatus);
 		model.addAttribute("remainSeconds",  remainSeconds);
-		return "goods_detail";
+		return "goods/goods_detail";
 	} 
 	
 

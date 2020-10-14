@@ -4,6 +4,7 @@ import com.miaosha.agent.entity.GoodsVo;
 import com.miaosha.agent.entity.MiaoShaUser;
 import com.miaosha.agent.entity.MiaoshaOrder;
 import com.miaosha.agent.entity.Orderinfo;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 

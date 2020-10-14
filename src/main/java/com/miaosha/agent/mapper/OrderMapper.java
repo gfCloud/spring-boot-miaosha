@@ -27,7 +27,13 @@ public interface OrderMapper {
      * @param orderinfo 订单信息
      * @return Orderinfo
      */
-    int createOrder(Orderinfo orderinfo);
+    long createOrder(Orderinfo orderinfo);
 
-
+    /**
+     * 创建订单信息
+     *
+     * @param miaoshaOrder 秒杀订单信息
+     * @return Orderinfo
+     */
+    void insertOrderInfo(MiaoshaOrder miaoshaOrder);
 }

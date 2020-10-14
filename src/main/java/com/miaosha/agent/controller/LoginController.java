@@ -32,7 +32,7 @@ public class LoginController {
 
 	@GetMapping("/toLogin")
 	public String toLogin(){
-		return "login";
+		return "login/login";
 	}
 	
 	@PostMapping("/doLogin")

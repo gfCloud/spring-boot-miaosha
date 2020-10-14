@@ -122,7 +122,7 @@
         ,"title": "注册"
         ,"jump": "user/reg"
       },{
-        "name": "login"
+        "name": "templates.login.login"
         ,"title": "登入"
         ,"jump": "user/login"
       },{
