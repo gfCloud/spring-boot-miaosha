@@ -35,8 +35,7 @@ public class MyServletContextListener implements ServletContextListener {
 					System.out.println("定时器测试！");
 				}
 			}, cal.getTime(),  24 * 60 * 60 *1000);   //
-		
-		
+
 	}
 	
 	
