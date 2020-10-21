@@ -3,10 +3,9 @@ package com.miaosha.agent.service;
 import com.miaosha.agent.entity.GoodsVo;
 import com.miaosha.agent.entity.MiaoShaUser;
 import com.miaosha.agent.entity.MiaoshaOrder;
-import com.miaosha.agent.entity.Orderinfo;
-import org.springframework.transaction.annotation.Transactional;
+import com.miaosha.agent.entity.OrderInfo;
+import javax.servlet.http.HttpServletRequest;
 
-import java.util.List;
 
 /**
  * goods
@@ -28,7 +27,8 @@ public interface OrderService {
      *  生成订单
      * @param user 用户
      * @param goods 商品
+     * @param request 请求
      * @return goods列表
      */
-    Orderinfo createOrder(MiaoShaUser user, GoodsVo goods);
+    OrderInfo createOrder(MiaoShaUser user, GoodsVo goods, HttpServletRequest request);
 }

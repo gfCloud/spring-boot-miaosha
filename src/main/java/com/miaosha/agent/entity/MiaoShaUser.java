@@ -11,9 +11,10 @@ import java.util.Date;
 @Data
 @Table(name = "miaosha_user")
 public class MiaoShaUser {
-    @NotBlank(message = "ID不能为空")
+    private Integer id;
+    @NotBlank(message = "手机号不能为空")
     @IsMobile
-    private Long id;
+    private Long mobile;
     private String nickname;
     @NotBlank(message = "密码不能为空")
     @Length(min = 6, message = "密码长度错误")
@@ -23,5 +24,4 @@ public class MiaoShaUser {
     private Date registerdate;
     private Date lastlogindate;
     private Integer logincount;
-
 }

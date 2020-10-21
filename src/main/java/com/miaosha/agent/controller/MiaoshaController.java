@@ -3,17 +3,19 @@ package com.miaosha.agent.controller;
 import com.miaosha.agent.entity.GoodsVo;
 import com.miaosha.agent.entity.MiaoShaUser;
 import com.miaosha.agent.entity.MiaoshaOrder;
-import com.miaosha.agent.entity.Orderinfo;
+import com.miaosha.agent.entity.OrderInfo;
 import com.miaosha.agent.result.CodeMsg;
 import com.miaosha.agent.service.GoodsService;
 import com.miaosha.agent.service.OrderService;
-import com.miaosha.agent.service.impl.MiaoshaService;
+import com.miaosha.agent.service.MiaoshaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author qixin
@@ -34,12 +36,11 @@ public class MiaoshaController {
 
 
     @PostMapping("/domiaosha")
-    public String list(Model model, MiaoShaUser user, @RequestParam("goodsId") long goodsId) {
+    public String list(Model model, MiaoShaUser user, @RequestParam("goodsId") long goodsId, HttpServletRequest request) {
         model.addAttribute("user", user);
         if (user == null) {
             return "login";
         }
-
         //查询当亲商品库存数量
         GoodsVo goods = goodsService.getGoodsVoByGoodsId(goodsId);
         int stock = goods.getStockCount();
@@ -58,7 +59,7 @@ public class MiaoshaController {
 
         //减库存 下订单 写入秒杀订单
         //返回生成的订单
-        Orderinfo orderinfo = miaoshaService.getmiaosha(user, goods);
+        OrderInfo orderinfo = miaoshaService.getmiaosha(user, goods, request);
         model.addAttribute("orderInfo", orderinfo);
         model.addAttribute("goods", goods);
         return "order/order_detail";

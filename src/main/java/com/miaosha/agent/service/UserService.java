@@ -14,10 +14,10 @@ public interface UserService {
     /**
      * 根据ID获取信息
      *
-     * @param id 用户ID
+     * @param mobile 用户手机
      * @return 用户信息
      */
-    LoginVo getById(int id);
+    LoginVo getById(Long mobile);
 
     /**
      * 新增用户信息

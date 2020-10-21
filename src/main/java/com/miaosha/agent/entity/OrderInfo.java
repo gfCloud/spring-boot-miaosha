@@ -2,15 +2,22 @@ package com.miaosha.agent.entity;
 
 import lombok.Data;
 
+import javax.persistence.Table;
 import java.util.Date;
-
+/**
+ * @author lr-qixin
+ * */
 @Data
-public class Orderinfo {
+public class OrderInfo {
     private Long id;
+    /**
+     * 订单单号
+     */
+    private String orderNo;
     /**
      * 用户id
      */
-    private Long userId;
+    private Integer userId;
     /**
      * 商品id
      */

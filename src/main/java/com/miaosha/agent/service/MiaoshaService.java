@@ -1,9 +1,10 @@
-package com.miaosha.agent.service.impl;
+package com.miaosha.agent.service;
 
 import com.miaosha.agent.entity.GoodsVo;
 import com.miaosha.agent.entity.MiaoShaUser;
-import com.miaosha.agent.entity.Orderinfo;
+import com.miaosha.agent.entity.OrderInfo;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -18,8 +19,9 @@ public interface MiaoshaService {
      * 查询goods列表
      * @param user 当前用户
      * @param goods 当前商品
-     * @return Orderinfo 秒杀订单
+     * @param  request 请求
+     * @return OrderInfo 秒杀订单
      */
-    Orderinfo getmiaosha(MiaoShaUser user, GoodsVo goods);
+    OrderInfo getmiaosha(MiaoShaUser user, GoodsVo goods, HttpServletRequest request);
 
 }

@@ -8,7 +8,7 @@
 
 	<select id="getbyID" parameterType="java.lang.Integer"
 		resultType="com.miaosha.agent.entity.LoginVo">
-		select * from user where id = #{id}
+		select * from user where mobile = #{mobile}
 	</select>
 
 	<insert id="InsertUser" parameterType="com.miaosha.agent.entity.LoginVo">

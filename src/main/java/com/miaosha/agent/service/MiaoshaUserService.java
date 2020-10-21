@@ -16,10 +16,10 @@ public interface MiaoshaUserService {
 	/**
 	 * 根据用户ID查询信息
 	 * 
-	 * @param id 用户ID
+	 * @param mobile 用户手机
 	 * @return 用户信息
 	 */
-	MiaoShaUser getByid(String id);
+	MiaoShaUser getByMobile(Long mobile);
 
 	/**
 	 * 用户登录

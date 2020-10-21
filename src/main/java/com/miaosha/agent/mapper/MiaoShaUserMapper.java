@@ -11,6 +11,6 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface MiaoShaUserMapper {
 
-	MiaoShaUser getbyID(@Param("id") String id);
+	MiaoShaUser getByMobile(@Param("mobile") Long mobile);
 	
 }

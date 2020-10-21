@@ -12,7 +12,7 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface UserMapper {
 
-    LoginVo getbyID(@Param("id") int id);
+    LoginVo getById(@Param("mobile") long mobile);
 
     int InsertUser(LoginUserDTO loginUserDTO);
 

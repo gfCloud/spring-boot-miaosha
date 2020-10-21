@@ -2,16 +2,16 @@ package com.miaosha.agent.service.impl;
 
 import com.miaosha.agent.entity.GoodsVo;
 import com.miaosha.agent.entity.MiaoShaUser;
-import com.miaosha.agent.entity.Orderinfo;
-import com.miaosha.agent.mapper.GoodsMapper;
+import com.miaosha.agent.entity.OrderInfo;
 import com.miaosha.agent.service.GoodsService;
+import com.miaosha.agent.service.MiaoshaService;
 import com.miaosha.agent.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * goods
@@ -32,9 +32,9 @@ public class MiaoshaServiceImpl implements MiaoshaService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public Orderinfo getmiaosha(MiaoShaUser user, GoodsVo goods) {
+    public OrderInfo getmiaosha(MiaoShaUser user, GoodsVo goods,HttpServletRequest request) {
         goodsService.reduceStock(goods);
-        return orderService.createOrder(user,goods);
+        return orderService.createOrder(user,goods, request);
     }
 
 

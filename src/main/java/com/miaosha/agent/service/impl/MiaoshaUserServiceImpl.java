@@ -26,70 +26,68 @@ import javax.servlet.http.HttpServletResponse;
 @Slf4j
 @Service
 public class MiaoshaUserServiceImpl implements MiaoshaUserService {
-	public static final String COOKIE_NAME_TOKEN = "token";
+    public static final String COOKIE_NAME_TOKEN = "token";
 
-	private final MiaoShaUserMapper userMapper;
-	private final RedisService redisservice;
+    private final MiaoShaUserMapper miaoshauserMapper;
+    private final RedisService redisservice;
 
-	@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-	public MiaoshaUserServiceImpl(MiaoShaUserMapper userMapper, RedisService redisservice) {
-		this.userMapper = userMapper;
-		this.redisservice = redisservice;
-	}
+    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
+    public MiaoshaUserServiceImpl(MiaoShaUserMapper miaoshauserMapper, RedisService redisservice) {
+        this.miaoshauserMapper = miaoshauserMapper;
+        this.redisservice = redisservice;
+    }
 
+    @Override
+    public MiaoShaUser getByMobile(Long mobile) {
+        return miaoshauserMapper.getByMobile(mobile);
+    }
 
+    @Override
+    public void login(HttpServletResponse response, LoginUser loginUser) {
+        if (loginUser == null) {
+            throw new GlobalException(CodeMsg.SERVER_ERROR);
+        }
+        Long mobile = loginUser.getMobile();
+        String fromPass = loginUser.getPassword();
+        MiaoShaUser users = getByMobile(mobile);
+        if (users == null) {
+            throw new GlobalException(CodeMsg.MOBILE_NOT_EXIST);
+        }
+        String dbpass = users.getPassword();
+        String saltDb = users.getSalt();
+        //获取加密之后的密码
+        String calcPass = MD5Until.inputPassToDBPass(fromPass, saltDb);
+        if (!calcPass.equals(dbpass)) {
+            throw new GlobalException(CodeMsg.PASSWORD_ERROR);
+        }
+        //随机生成uuid
+        String token = UUIDUntil.uuid();
+        addCookie(response, token, users);
+    }
 
-	@Override
-	public MiaoShaUser getByid(String id) {
-		return userMapper.getbyID(id);
-	}
-
-	@Override
-	public void login(HttpServletResponse response, LoginUser loginUser) {
-		if (loginUser == null) {
-			throw new GlobalException(CodeMsg.SERVER_ERROR);
-		}
-		String id = loginUser.getId();
-		String fromPass = loginUser.getPassword();
-		MiaoShaUser users = getByid(id);
-		if (users == null) {
-			throw new GlobalException(CodeMsg.MOBILE_NOT_EXIST);
-		}
-		String dbpass = users.getPassword();
-		String saltDb = users.getSalt();
-		//获取加密之后的密码
-		String calcPass = MD5Until.inputPassToDBPass(fromPass, saltDb);
-		if (!calcPass.equals(dbpass)) {
-			throw new GlobalException(CodeMsg.PASSWORD_ERROR);
-		}
-		//随机生成uuid
-		String token = UUIDUntil.uuid();
-		addCookie(response,token,users);
-	}
-
-	@Override
-	public MiaoShaUser getByToken(HttpServletResponse response, String token) {
-		if(StringUtils.isEmpty(token)){
-			return null;
-		}
-		MiaoShaUser user =  redisservice.get(MiaoshaUserKey.token, token, MiaoShaUser.class);
-		if(user != null){
-			//延长有效期
-			addCookie(response,token,user);
-		}
-		return user;
-	}
+    @Override
+    public MiaoShaUser getByToken(HttpServletResponse response, String token) {
+        if (StringUtils.isEmpty(token)) {
+            return null;
+        }
+        MiaoShaUser user = redisservice.get(MiaoshaUserKey.token, token, MiaoShaUser.class);
+        if (user != null) {
+            //延长有效期
+            addCookie(response, token, user);
+        }
+        return user;
+    }
 
 
-	@Override
-	public void addCookie(HttpServletResponse response, String token, MiaoShaUser user){
-		//把信息放进redis
-		redisservice.set(MiaoshaUserKey.token, token, user);
-		//设置cookie 
-		Cookie cookie = new Cookie(COOKIE_NAME_TOKEN, token);
-		cookie.setMaxAge(MiaoshaUserKey.token.expireSeconds());
-		cookie.setPath("/");
-		response.addCookie(cookie);
-	}
+    @Override
+    public void addCookie(HttpServletResponse response, String token, MiaoShaUser user) {
+        //把信息放进redis
+        redisservice.set(MiaoshaUserKey.token, token, user);
+        //设置cookie
+        Cookie cookie = new Cookie(COOKIE_NAME_TOKEN, token);
+        cookie.setMaxAge(MiaoshaUserKey.token.expireSeconds());
+        cookie.setPath("/");
+        response.addCookie(cookie);
+    }
 
 }

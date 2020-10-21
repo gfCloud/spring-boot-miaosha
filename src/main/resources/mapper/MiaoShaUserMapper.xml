@@ -11,9 +11,9 @@
 		<result column="login_count" property="logincount" />
 	</resultMap>
 
-	<select id="getbyID" parameterType="java.lang.String"
+	<select id="getByMobile" parameterType="java.lang.Long"
 		resultType="com.miaosha.agent.entity.MiaoShaUser">
-		select * from miaosha_user where id = #{id}
+		select * from miaosha_user where mobile = #{mobile}
 	</select>
 
 </mapper>

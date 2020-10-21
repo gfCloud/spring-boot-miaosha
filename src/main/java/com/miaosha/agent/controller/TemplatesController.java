@@ -35,8 +35,8 @@ public class TemplatesController {
 	}
 
 	@GetMapping("/thymeleaf")
-	public String thymeleaf(Model model, int id) {
-		LoginVo user = userservice.getById(id);
+	public String thymeleaf(Model model, Long mobile) {
+		LoginVo user = userservice.getById(mobile);
 		model.addAttribute("id", user.getId());
 		model.addAttribute("name", user.getName());
 		return "demo";
@@ -56,8 +56,8 @@ public class TemplatesController {
 
 	@GetMapping("/get")
 	@ResponseBody
-	public LoginVo getByid(int id) {
-		return userservice.getById(id);
+	public LoginVo getByid(Long mobile) {
+		return userservice.getById(mobile);
 	}
 
 	@PostMapping("/insert")

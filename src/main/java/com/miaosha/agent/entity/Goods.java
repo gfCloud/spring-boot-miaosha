@@ -2,6 +2,9 @@ package com.miaosha.agent.entity;
 
 import lombok.Data;
 
+/**
+ * @author lr-qixin
+ * */
 @Data
 public class Goods {
 	private Long id;

@@ -1,7 +1,7 @@
 package com.miaosha.agent.mapper;
 
 import com.miaosha.agent.entity.MiaoshaOrder;
-import com.miaosha.agent.entity.Orderinfo;
+import com.miaosha.agent.entity.OrderInfo;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -25,15 +25,15 @@ public interface OrderMapper {
      * 创建订单信息
      *
      * @param orderinfo 订单信息
-     * @return Orderinfo
+     * @return OrderInfo
      */
-    long createOrder(Orderinfo orderinfo);
+    long createOrder(OrderInfo orderinfo);
 
     /**
      * 创建订单信息
      *
      * @param miaoshaOrder 秒杀订单信息
-     * @return Orderinfo
+     * @return OrderInfo
      */
     void insertOrderInfo(MiaoshaOrder miaoshaOrder);
 }

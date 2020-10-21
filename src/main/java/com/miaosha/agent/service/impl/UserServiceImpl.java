@@ -26,8 +26,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public LoginVo getById(int id) {
-        return usermapper.getbyID(id);
+    public LoginVo getById(Long mobile) {
+        return usermapper.getById(mobile);
     }
 
     /**

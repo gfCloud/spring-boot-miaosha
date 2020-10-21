@@ -23,15 +23,15 @@
           and a.goods_id = #{goodsId};
     </select>
 
-    <insert id="createOrder" parameterType="com.miaosha.agent.entity.Orderinfo">
+    <insert id="createOrder" parameterType="com.miaosha.agent.entity.OrderInfo">
         <selectKey keyColumn="id" resultType="Long" keyProperty="id" order="AFTER">
             select LAST_INSERT_ID()
         </selectKey>
         INSERT order_info(user_id, goods_id, deliverry_addr_id, goods_name, goods_count, goods_price, order_channel,
-        status, create_date, pay_date)
+        status, create_date, pay_date,order_no)
         VALUES (#{userId}, #{goodsId}, #{deliverryAddrId}, #{goodsName}, #{goodsCount}, #{goodsPrice},
         #{orderChannel},
-        #{status}, #{createDate}, #{payDate})
+        #{status}, #{createDate}, #{payDate},#{orderNo})
     </insert>
 
     <insert id="insertOrderInfo" parameterType="com.miaosha.agent.entity.MiaoshaOrder">
