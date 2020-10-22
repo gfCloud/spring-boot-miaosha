@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 
 /**
  * goods
- * @author 
+ * @author gaoFan
  */
 @Table(name = "goods")
 public class Goods {
