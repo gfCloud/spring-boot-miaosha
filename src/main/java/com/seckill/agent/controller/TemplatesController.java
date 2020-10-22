@@ -2,6 +2,7 @@ package com.seckill.agent.controller;
 
 import com.seckill.agent.consts.CurrencyConsts;
 import com.seckill.agent.dto.req.LoginUserDTO;
+import com.seckill.agent.dto.resp.LoginRespDTO;
 import com.seckill.agent.entity.LoginVo;
 import com.seckill.agent.redis.RedisService;
 import com.seckill.agent.redis.UserKey;
@@ -36,7 +37,7 @@ public class TemplatesController {
 
 	@GetMapping("/thymeleaf")
 	public String thymeleaf(Model model, Long mobile) {
-		LoginVo user = userservice.getById(mobile);
+		LoginRespDTO user = userservice.getById(mobile);
 		model.addAttribute("id", user.getId());
 		model.addAttribute("name", user.getName());
 		return "demo";
@@ -56,7 +57,7 @@ public class TemplatesController {
 
 	@GetMapping("/get")
 	@ResponseBody
-	public LoginVo getById(Long mobile) {
+	public LoginRespDTO getById(Long mobile) {
 		return userservice.getById(mobile);
 	}
 

@@ -6,10 +6,10 @@
 		<result column="name" property="name" />
 	</resultMap>
 
-	<select id="getByID" parameterType="java.lang.Integer"
+	<!--<select id="getByID" parameterType="java.lang.Integer"
 		resultType="com.seckill.agent.entity.LoginVo">
 		select * from seckill_user where mobile = #{mobile}
-	</select>
+	</select>-->
 
 	<insert id="insertUser" parameterType="com.seckill.agent.entity.LoginVo">
 		insert into seckill_user(id,nickname) value (#{id},#{name})

@@ -1,18 +1,20 @@
 package com.seckill.agent.mapper;
 
-import java.util.List;
-
+import com.seckill.agent.common.mapper.MyMapper;
 import com.seckill.agent.entity.GoodsVo;
 import com.seckill.agent.entity.SeckillGoods;
+import com.seckill.agent.model.Goods;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * @author qixin
  * 商品查询
  */
 @Mapper
-public interface GoodsMapper {
+public interface GoodsMapper extends MyMapper<Goods> {
 
     /**
      * 查询商品列表
