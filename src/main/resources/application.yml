@@ -29,7 +29,7 @@ spring:
     testWhiledle: true
     timeBetweenEvictionRunMillis: 60000
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://localhost:3306/miaosha?rewriteBatchedStatements=true&useUnicode=true&characterEncoding=UTF-8&generateSimpleParameterMetadata=true&autoReconnect=true&useSSL=false&serverTimezone=GMT%2b8&allowMultiQueries=true
+    url: jdbc:mysql://localhost:3306/seckill?rewriteBatchedStatements=true&useUnicode=true&characterEncoding=UTF-8&generateSimpleParameterMetadata=true&autoReconnect=true&useSSL=false&serverTimezone=GMT%2b8&allowMultiQueries=true
     username: root
     validationQuery: select 'x'
   thymeleaf:
