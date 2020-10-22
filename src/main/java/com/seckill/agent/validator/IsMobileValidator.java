@@ -6,7 +6,10 @@ import com.seckill.agent.service.impl.ValidationMobile;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-public class IsmobileValidator implements ConstraintValidator<IsMobile,String> {
+/**
+ * @author lr-qixin
+ * */
+public class IsMobileValidator implements ConstraintValidator<IsMobile,String> {
 
 	private boolean required = false;
 	

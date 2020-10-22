@@ -23,7 +23,7 @@ import javax.validation.Payload;
 @Target({ METHOD, FIELD, ANNOTATION_TYPE, CONSTRUCTOR, PARAMETER })
 @Retention(RUNTIME)
 @Documented
-@Constraint(validatedBy = { IsmobileValidator.class })
+@Constraint(validatedBy = { IsMobileValidator.class })
 public @interface IsMobile {
 
 	boolean required() default true;
