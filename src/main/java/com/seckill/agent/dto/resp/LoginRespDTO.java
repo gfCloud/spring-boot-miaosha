@@ -1,6 +1,3 @@
-/*
- * Copyright  2020 www.manniuhealth.com. All rights reserved.
- */
 package com.seckill.agent.dto.resp;
 
 import lombok.Data;
