@@ -1,10 +1,10 @@
 package com.seckill.agent.validator;
 
+import com.alibaba.druid.util.StringUtils;
+import com.seckill.agent.service.impl.ValidationMobile;
+
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-
-import com.alibaba.druid.util.StringUtils;
-import com.seckill.agent.service.impl.Validation_mobile;
 
 public class IsmobileValidator implements ConstraintValidator<IsMobile,String> {
 
@@ -18,12 +18,12 @@ public class IsmobileValidator implements ConstraintValidator<IsMobile,String> {
 	@Override
 	public boolean isValid(String value, ConstraintValidatorContext context) {
 		if(required){
-			return Validation_mobile.isMobile(value);
+			return ValidationMobile.isMobile(value);
 		}else{
 			if(StringUtils.isEmpty(value)){
 				return true;
 			}else{
-				return Validation_mobile.isMobile(value);
+				return ValidationMobile.isMobile(value);
 			}
 		}
 	}
