@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:HH="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
 <title>商品详情</title>
@@ -39,9 +39,9 @@
 				<td th:text="${#dates.format(goods.startDate,'yyyy-MM-dd HH:mm:ss')}"></td>
 			    <td id="miaoshaTip">
 					<input type="hidden" id="remainSeconds" th:value="${remainSeconds}">
-					<span  th:if="${miaoShaStatus eq 0 }">秒杀倒计时：<span id="countdown" th:text="${remainSeconds}"></span>秒</span>
-					<span  th:if="${miaoShaStatus eq 1}">秒杀进行中</span>
-					<span  th:if="${miaoShaStatus eq 2}">秒杀已结束</span>
+					<span  th:if="${seckillStatus eq 0 }">秒杀倒计时：<span id="countdown" th:text="${remainSeconds}"></span>秒</span>
+					<span  th:if="${seckillStatus eq 1}">秒杀进行中</span>
+					<span  th:if="${seckillStatus eq 2}">秒杀已结束</span>
 				</td>
 				<td>
 					<form id="miaoshaForm" method="post" action="/miaosha/domiaosha">
@@ -56,7 +56,7 @@
 			</tr>
 			<tr>
 				<td>秒杀价</td>
-				<td colspan="3" th:text="${goods.miaoshaPrice}"></td>
+				<td colspan="3" th:text="${goods.secondKillPrice}"></td>
 			</tr>
 			<tr>
 				<td>库存数量</td>
@@ -70,8 +70,8 @@
 		countDown()
 	});
 	function countDown(){
-		var remainSeconds = $("#remainSeconds").val();
-		var timeOut;
+		let remainSeconds = $("#remainSeconds").val();
+		let timeOut;
 		if(remainSeconds > 0){
 			$("#byButton").attr("disabled",true);
 			timeOut = setTimeout(function(){

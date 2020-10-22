@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.miaosha.agent.mapper.OrderMapper">
-    <resultMap id="GoodsVo" type="com.miaosha.agent.entity.MiaoshaOrder">
+<mapper namespace="com.seckill.agent.mapper.OrderMapper">
+    <resultMap id="GoodsVo" type="com.seckill.agent.entity.SeckillOrder">
         <result column="user_id" property="userld"/>
         <result column="id" property="orderid"/>
         <result column="goods_id" property="goodsld"/>
     </resultMap>
 
-    <select id="getMiaoshaOrderByUserIdGoodsId" resultType="com.miaosha.agent.entity.MiaoshaOrder">
+    <select id="getMiaoshaOrderByUserIdGoodsId" resultType="com.seckill.agent.entity.SeckillOrder">
         SELECT a.id,
                a.user_id,
                a.goods_id,
@@ -23,7 +23,7 @@
           and a.goods_id = #{goodsId};
     </select>
 
-    <insert id="createOrder" parameterType="com.miaosha.agent.entity.OrderInfo">
+    <insert id="createOrder" parameterType="com.seckill.agent.entity.OrderInfo">
         <selectKey keyColumn="id" resultType="Long" keyProperty="id" order="AFTER">
             select LAST_INSERT_ID()
         </selectKey>
@@ -34,8 +34,8 @@
         #{status}, #{createDate}, #{payDate},#{orderNo})
     </insert>
 
-    <insert id="insertOrderInfo" parameterType="com.miaosha.agent.entity.MiaoshaOrder">
-        insert miaosha_order (user_id, order_id, goods_id)
+    <insert id="insertOrderInfo" parameterType="com.seckill.agent.entity.SeckillOrder">
+        insert seckill_order (user_id, order_id, goods_id)
         values (#{userId}, #{orderId}, #{goodsId})
     </insert>
 
