@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(rollbackFor = Exception.class)
     public int insertUser(LoginUserDTO loginUserDTO) {
-        return usermapper.InsertUser(loginUserDTO);
+        return usermapper.insertUser(loginUserDTO);
     }
 
 }

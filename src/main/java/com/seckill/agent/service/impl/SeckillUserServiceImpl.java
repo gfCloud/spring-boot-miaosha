@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 @Slf4j
 @Service
 public class SeckillUserServiceImpl implements SeckillUserService {
-    public static final String COOKIE_NAME_TOKEN = "token";
+    private static final String COOKIE_NAME_TOKEN = "token";
 
     private final SeckillUserMapper seckilluserMapper;
     private final RedisService redisservice;

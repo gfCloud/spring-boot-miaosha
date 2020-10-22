@@ -23,11 +23,14 @@ import javax.servlet.http.HttpServletRequest;
 @Service
 public class SeckillServiceImpl implements SeckillService {
 
-    @Autowired
-    GoodsService goodsService;
+    private final GoodsService goodsService;
 
-    @Autowired
-    OrderService orderService;
+    private final OrderService orderService;
+
+    public SeckillServiceImpl(GoodsService goodsService, OrderService orderService) {
+        this.goodsService = goodsService;
+        this.orderService = orderService;
+    }
 
 
     @Override

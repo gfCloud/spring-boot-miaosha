@@ -22,8 +22,11 @@ import javax.servlet.http.HttpServletResponse;
 public class UserArgumentResolvers implements HandlerMethodArgumentResolver {
     private static final String COOKIE_NAME_TOKEN = "token";
 
-    @Autowired
-    SeckillUserService userService;
+    private final SeckillUserService userService;
+
+    public UserArgumentResolvers(SeckillUserService userService) {
+        this.userService = userService;
+    }
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
@@ -39,7 +42,7 @@ public class UserArgumentResolvers implements HandlerMethodArgumentResolver {
         //判断null
         assert request != null;
         String paramToken = request.getParameter(COOKIE_NAME_TOKEN);
-        String cookieToken = getCookieValue(request, COOKIE_NAME_TOKEN);
+        String cookieToken = getCookieValue(request);
         if (StringUtils.isEmpty(cookieToken) && StringUtils.isEmpty(paramToken)) {
             return null;
         }
@@ -47,10 +50,10 @@ public class UserArgumentResolvers implements HandlerMethodArgumentResolver {
         return userService.getByToken(response, token);
     }
 
-    private String getCookieValue(HttpServletRequest request, String cookieName) {
+    private String getCookieValue(HttpServletRequest request) {
         Cookie[] cookies = request.getCookies();
         for (Cookie cookie : cookies) {
-            if (cookie.getName().equals(cookieName)) {
+            if (cookie.getName().equals(COOKIE_NAME_TOKEN)) {
                 return cookie.getValue();
             }
         }

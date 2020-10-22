@@ -8,7 +8,6 @@ import com.seckill.agent.result.CodeMsg;
 import com.seckill.agent.service.GoodsService;
 import com.seckill.agent.service.OrderService;
 import com.seckill.agent.service.SeckillService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,14 +24,17 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/seckill")
 public class SeckillController {
 
-    @Autowired
-    GoodsService goodsService;
+    private final GoodsService goodsService;
 
-    @Autowired
-    OrderService orderService;
+    private final OrderService orderService;
 
-    @Autowired
-    SeckillService seckillService;
+    private final SeckillService seckillService;
+
+    public SeckillController(GoodsService goodsService, OrderService orderService, SeckillService seckillService) {
+        this.goodsService = goodsService;
+        this.orderService = orderService;
+        this.seckillService = seckillService;
+    }
 
 
     @PostMapping("/doSeckill")
