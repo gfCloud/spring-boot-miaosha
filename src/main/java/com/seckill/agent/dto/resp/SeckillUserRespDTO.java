@@ -1,4 +1,4 @@
-package com.seckill.agent.entity;
+package com.seckill.agent.dto.resp;
 
 import com.seckill.agent.validator.IsMobile;
 import lombok.Data;
@@ -8,7 +8,7 @@ import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
 @Data
-public class SeckillUser extends com.seckill.agent.model.SeckillUser {
+public class SeckillUserRespDTO {
     private Integer id;
     @NotBlank(message = "手机号不能为空")
     @IsMobile

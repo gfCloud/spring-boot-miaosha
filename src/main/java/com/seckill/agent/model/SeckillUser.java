@@ -1,7 +1,5 @@
 package com.seckill.agent.model;
 
-import com.seckill.agent.dto.resp.LoginRespDTO;
-
 import javax.persistence.Table;
 import java.util.Date;
 
@@ -10,7 +8,7 @@ import java.util.Date;
  * @author gaoFan
  */
 @Table(name = "seckill_user")
-public class SeckillUser extends LoginRespDTO {
+public class SeckillUser{
     /**
      * 用户id
      */

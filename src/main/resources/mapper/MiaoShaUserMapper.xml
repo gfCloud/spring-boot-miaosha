@@ -6,15 +6,15 @@
 		<result column="nickname" property="nickname" />
 		<result column="salt" property="salt" />
 		<result column="head" property="head" />
-		<result column="register_date" property="registerdate" />
-		<result column="last_login_date" property="lastlogindate" />
-		<result column="login_count" property="logincount" />
+		<result column="register_date" property="registerDate" />
+		<result column="last_login_date" property="lastLoginDate" />
+		<result column="login_count" property="loginCount" />
 	</resultMap>
 
-	<select id="getByMobile" parameterType="java.lang.Long"
-		resultType="com.seckill.agent.entity.SeckillUser">
-		select * from seckill_user where mobile = #{mobile}
-	</select>
+	<!--<select id="getByMobile" parameterType="java.lang.Long"-->
+		<!--resultType="com.seckill.agent.entity.SeckillUser">-->
+		<!--select * from seckill_user where mobile = #{mobile}-->
+	<!--</select>-->
 
 </mapper>
 

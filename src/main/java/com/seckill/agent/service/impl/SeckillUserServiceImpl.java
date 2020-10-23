@@ -1,13 +1,16 @@
 package com.seckill.agent.service.impl;
 
+import com.seckill.agent.common.service.impl.CommonServiceImpl;
+import com.seckill.agent.dto.resp.LoginRespDTO;
 import com.seckill.agent.entity.LoginUser;
-import com.seckill.agent.entity.SeckillUser;
 import com.seckill.agent.exception.GlobalException;
 import com.seckill.agent.mapper.SeckillUserMapper;
-import com.seckill.agent.redis.SeckillUserKey;
+import com.seckill.agent.model.SeckillUser;
 import com.seckill.agent.redis.RedisService;
+import com.seckill.agent.redis.SeckillUserKey;
 import com.seckill.agent.result.CodeMsg;
 import com.seckill.agent.service.SeckillUserService;
+import com.seckill.agent.until.BeanUtils;
 import com.seckill.agent.until.MD5Until;
 import com.seckill.agent.until.UUIDUntil;
 import lombok.extern.slf4j.Slf4j;
@@ -25,7 +28,7 @@ import javax.servlet.http.HttpServletResponse;
  **/
 @Slf4j
 @Service
-public class SeckillUserServiceImpl implements SeckillUserService {
+public class SeckillUserServiceImpl  extends CommonServiceImpl<SeckillUser, Long> implements SeckillUserService {
     private static final String COOKIE_NAME_TOKEN = "token";
 
     private final SeckillUserMapper seckilluserMapper;
@@ -38,8 +41,11 @@ public class SeckillUserServiceImpl implements SeckillUserService {
     }
 
     @Override
-    public SeckillUser getByMobile(Long mobile) {
-        return seckilluserMapper.getByMobile(mobile);
+    public LoginRespDTO getByMobile(Long mobile) {
+        LoginRespDTO respDTO = new LoginRespDTO();
+        SeckillUser seckillUser = seckilluserMapper.selectByPrimaryKey(mobile);
+        BeanUtils.copyPropertiesIgnoreNull(seckillUser,respDTO);
+        return respDTO;
     }
 
     @Override
@@ -49,7 +55,7 @@ public class SeckillUserServiceImpl implements SeckillUserService {
         }
         Long mobile = loginUser.getMobile();
         String fromPass = loginUser.getPassword();
-        SeckillUser users = getByMobile(mobile);
+        LoginRespDTO users = getByMobile(mobile);
         if (users == null) {
             throw new GlobalException(CodeMsg.MOBILE_NOT_EXIST);
         }
@@ -66,11 +72,11 @@ public class SeckillUserServiceImpl implements SeckillUserService {
     }
 
     @Override
-    public SeckillUser getByToken(HttpServletResponse response, String token) {
+    public LoginRespDTO getByToken(HttpServletResponse response, String token) {
         if (StringUtils.isEmpty(token)) {
             return null;
         }
-        SeckillUser user = redisservice.get(SeckillUserKey.token, token, SeckillUser.class);
+        LoginRespDTO user = redisservice.get(SeckillUserKey.token, token, LoginRespDTO.class);
         if (user != null) {
             //延长有效期
             addCookie(response, token, user);
@@ -80,7 +86,7 @@ public class SeckillUserServiceImpl implements SeckillUserService {
 
 
     @Override
-    public void addCookie(HttpServletResponse response, String token, SeckillUser user) {
+    public void addCookie(HttpServletResponse response, String token, LoginRespDTO user) {
         //把信息放进redis
         redisservice.set(SeckillUserKey.token, token, user);
         //设置cookie

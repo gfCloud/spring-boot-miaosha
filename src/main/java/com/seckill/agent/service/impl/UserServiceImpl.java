@@ -6,6 +6,7 @@ import com.seckill.agent.dto.resp.LoginRespDTO;
 import com.seckill.agent.mapper.UserMapper;
 import com.seckill.agent.model.SeckillUser;
 import com.seckill.agent.service.UserService;
+import com.seckill.agent.until.BeanUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -29,7 +30,10 @@ public class UserServiceImpl extends CommonServiceImpl<SeckillUser, Long> implem
 
     @Override
     public LoginRespDTO getById(Long mobile) {
-        return usermapper.selectByPrimaryKey(mobile);
+        LoginRespDTO loginRespDTO = new LoginRespDTO();
+        SeckillUser seckillUser = usermapper.selectByPrimaryKey(mobile);
+        BeanUtils.copyPropertiesIgnoreNull(seckillUser,loginRespDTO);
+        return loginRespDTO;
     }
 
     /**

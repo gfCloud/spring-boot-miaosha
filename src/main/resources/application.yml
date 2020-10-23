@@ -5,7 +5,7 @@ mybatis:
     default-feth-size: 100
     default-statement-timeout: 3000
   mapperLocations: classpath:mapper/*.xml
-  type-aliases-package: com.miaosha.agent.entity
+  type-aliases-package: com.seckill.agent.entity
 redis:
   host: 127.0.0.1
   password: 123456
