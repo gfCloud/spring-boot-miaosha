@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.seckill.agent.mapper.GoodsMapper">
-	<resultMap id="GoodsVo" type="com.seckill.agent.entity.GoodsVo">
-		<result column="id" property="id" />
-		<result column="goods_name" property="goodsName" />
-		<result column="goods_title" property="goodsTitle" />
-		<result column="goods_img" property="goodsImg" />
-		<result column="goods_detail" property="goodsDetail" />
-		<result column="goods_price" property="goodsPrice" />
-		<result column="second_kill_price" property="secondKillPrice" />
-		<result column="goods_stock" property="goodsStock" />
-		<result column="stock_count" property="stockCount" />
-		<result column="start_date" property="startDate" />
-		<result column="end_date" property="endDate" />
+	<resultMap id="BaseResultMap" type="com.seckill.agent.model.SeckillGoods">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="goods_id" jdbcType="INTEGER" property="goodsId" />
+		<result column="second_kill_price" jdbcType="DECIMAL" property="secondKillPrice" />
+		<result column="stock_count" jdbcType="INTEGER" property="stockCount" />
+		<result column="start_date" jdbcType="TIMESTAMP" property="startDate" />
+		<result column="end_date" jdbcType="TIMESTAMP" property="endDate" />
 	</resultMap>
-
 	<select id="listGoodsVo" resultType="com.seckill.agent.entity.GoodsVo">
 		select g.id,g.goods_name, g.goods_title, g.goods_img, g.goods_detail,
 		       g.goods_price,g.goods_stock,mg.goods_id,mg.stock_count,
@@ -31,9 +25,9 @@
 		where g.id = #{goodsId}
 	</select>
 
-	<update id="reduceStock" parameterType="map">
+	<!--<update id="reduceStock" parameterType="map">
 		update seckill_goods a SET a.stock_count =#{stockCount}  where goods_id =#{goodsId}
-	</update>
+	</update>-->
 
 
 

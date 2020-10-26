@@ -12,11 +12,6 @@
 		<result column="login_count" property="loginCount" />
 	</resultMap>
 
-	<!--<select id="getByMobile" parameterType="java.lang.Long"-->
-		<!--resultType="com.seckill.agent.entity.SeckillUser">-->
-		<!--select * from seckill_user where mobile = #{mobile}-->
-	<!--</select>-->
-
 </mapper>
 
 

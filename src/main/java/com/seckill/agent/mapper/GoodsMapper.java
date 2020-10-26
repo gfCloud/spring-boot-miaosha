@@ -2,8 +2,7 @@ package com.seckill.agent.mapper;
 
 import com.seckill.agent.common.mapper.MyMapper;
 import com.seckill.agent.entity.GoodsVo;
-import com.seckill.agent.entity.SeckillGoods;
-import com.seckill.agent.model.Goods;
+import com.seckill.agent.model.SeckillGoods;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -14,7 +13,7 @@ import java.util.List;
  * 商品查询
  */
 @Mapper
-public interface GoodsMapper extends MyMapper<Goods> {
+public interface GoodsMapper extends MyMapper<SeckillGoods> {
 
     /**
      * 查询商品列表
@@ -37,5 +36,5 @@ public interface GoodsMapper extends MyMapper<Goods> {
      * @param good 商品
      * @return int
      */
-    int reduceStock(SeckillGoods good);
+//    int reduceStock(SeckillGoods good);
 }

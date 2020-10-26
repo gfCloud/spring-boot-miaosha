@@ -1,8 +1,8 @@
 package com.seckill.agent.entity;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -10,12 +10,14 @@ import java.util.Date;
  * */
 
 @Data
-@EqualsAndHashCode(callSuper = true)
-public class GoodsVo extends Goods {
-	private Double secondKillPrice;
+public class GoodsVo{
+	private Integer id;
+	private BigDecimal secondKillPrice;
 	private Integer stockCount;
 	private Date startDate;
 	private Date endDate;
 	private Integer status;
 	private Integer seconds;
+	private String goodsName;
+	private Integer goodsStock;
 }

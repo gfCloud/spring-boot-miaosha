@@ -1,6 +1,8 @@
 package com.seckill.agent.service;
 
+import com.seckill.agent.common.service.ICommonService;
 import com.seckill.agent.entity.GoodsVo;
+import com.seckill.agent.model.SeckillGoods;
 
 import java.util.List;
 
@@ -10,7 +12,7 @@ import java.util.List;
  * @author qiXin
  * @date 2020/9/23
  **/
-public interface GoodsService {
+public interface GoodsService extends ICommonService<SeckillGoods, Long> {
 
     /**
      * 查询goods列表
@@ -31,5 +33,5 @@ public interface GoodsService {
      * @param goods 商品
      * @return GoodsVo
      */
-    void reduceStock(GoodsVo goods);
+//    void reduceStock(GoodsVo goods);
 }

@@ -1,11 +1,14 @@
 package com.seckill.agent.service.impl;
 
+import com.seckill.agent.common.service.impl.CommonServiceImpl;
 import com.seckill.agent.entity.GoodsVo;
-import com.seckill.agent.entity.SeckillGoods;
 import com.seckill.agent.mapper.GoodsMapper;
+import com.seckill.agent.model.SeckillGoods;
 import com.seckill.agent.service.GoodsService;
+import com.seckill.agent.until.BeanUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
@@ -17,7 +20,7 @@ import java.util.List;
  **/
 @Slf4j
 @Service
-public class GoodsServiceImpl implements GoodsService {
+public class GoodsServiceImpl extends CommonServiceImpl<SeckillGoods, Long> implements GoodsService {
 	
 	private final GoodsMapper goodsmapper;
 
@@ -36,13 +39,14 @@ public class GoodsServiceImpl implements GoodsService {
 		return goodsmapper.getGoodsVoByGoodsId(goodsId);
 	}
 
-	@Override
+	/*@Override
 	public void reduceStock(GoodsVo goods) {
-		SeckillGoods good = new SeckillGoods();
-		good.setGoodsId(goods.getId());
-		good.setStockCount(goods.getStockCount() - 1);
-		goodsmapper.reduceStock(good);
-	}
+		SeckillGoods seckillGoods = new SeckillGoods();
+		Example example = new Example(SeckillGoods.class);
+		example.createCriteria().andEqualTo("goodsId", goods.getId());
+		seckillGoods.setStockCount(goods.getStockCount() - 1);
+		goodsmapper.updateByExampleSelective(seckillGoods,example);
+	}*/
 
 
 }

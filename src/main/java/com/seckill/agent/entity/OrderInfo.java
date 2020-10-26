@@ -3,6 +3,7 @@ package com.seckill.agent.entity;
 import lombok.Data;
 
 import javax.persistence.Table;
+import java.math.BigDecimal;
 import java.util.Date;
 /**
  * @author lr-qixin
@@ -37,7 +38,7 @@ public class OrderInfo {
     /**
      * 商品单价
      */
-    private Double goodsPrice;
+    private BigDecimal goodsPrice;
     /**
      * 购买设备  1pc, 2android , 3ios
      */

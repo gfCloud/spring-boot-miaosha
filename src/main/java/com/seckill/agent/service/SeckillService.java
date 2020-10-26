@@ -1,9 +1,11 @@
 package com.seckill.agent.service;
 
 
+import com.seckill.agent.common.service.ICommonService;
 import com.seckill.agent.entity.GoodsVo;
 import com.seckill.agent.entity.OrderInfo;
 import com.seckill.agent.entity.SeckillUser;
+import com.seckill.agent.model.Goods;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author qiXin
  * @date 2020/9/23
  **/
-public interface SeckillService {
+public interface SeckillService extends ICommonService<Goods, Long> {
 
     /**
      * 查询goods列表
