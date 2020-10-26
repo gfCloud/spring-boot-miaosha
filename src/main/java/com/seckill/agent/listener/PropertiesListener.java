@@ -1,6 +1,6 @@
 package com.seckill.agent.listener;
 
-import com.seckill.agent.config.AlipayProperties;
+import com.seckill.agent.config.AliPayProperties;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.ApplicationListener;
 import org.springframework.stereotype.Component;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 public class PropertiesListener implements ApplicationListener<ApplicationStartedEvent> {
 
     @Override
-    public void onApplicationEvent(ApplicationStartedEvent applicationStartedEvent) {
-        AlipayProperties.loadproperties();
+    public void onApplicationEvent(ApplicationStartedEvent applicationStartedEvent)  {
+        AliPayProperties.loadProperties();
     }
 }

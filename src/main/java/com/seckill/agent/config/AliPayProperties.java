@@ -14,23 +14,23 @@ import java.util.Properties;
  * @date 2020-10-15
  */
 @Component
-public class AlipayProperties {
-    public static final String APP_ID = "appId";
-    public static final String PRIVARY_KEY = "privateKey";
-    public static final String PUBLIC_KEY = "publicKey";
-    public static final String NOTIFY_URL = "notifyUrl";
-    public static final String RETURN_URL = "returnUrl";
-    public static final String SIGN_TYPE = "signType";
-    public static final String CHARSET = "charset";
-    public static final String GATEWAY_URL = "gatewayUrl";
-    public static final String LOG_PATH = "logPath";
+public class AliPayProperties  {
+    private static final String APP_ID = "appId";
+    private static final String PRIVARY_KEY = "privateKey";
+    private static final String PUBLIC_KEY = "publicKey";
+    private static final String NOTIFY_URL = "notifyUrl";
+    private static final String RETURN_URL = "returnUrl";
+    private static final String SIGN_TYPE = "signType";
+    private static final String CHARSET = "charset";
+    private static final String GATEWAY_URL = "gatewayUrl";
+    private static final String LOG_PATH = "logPath";
 
     /**
      * 保存加载配置参数
      */
     private static Map<String, String> propertiesMap = new HashMap<String, String>();
 
-    public static void loadproperties() {
+    public static void loadProperties() {
         // 获得PathMatchingResourcePatternResolver对象
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         try {

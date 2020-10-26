@@ -33,7 +33,7 @@ public class SeckillUser{
      */
     private String head;
 
-    /**
+    /**z
      * 注册时间
      */
     private Date registerDate;
