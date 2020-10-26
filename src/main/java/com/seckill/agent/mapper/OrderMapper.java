@@ -27,7 +27,7 @@ public interface OrderMapper {
      * @param orderinfo 订单信息
      * @return OrderInfo
      */
-    long createOrder(OrderInfo orderinfo);
+    int createOrder(OrderInfo orderinfo);
 
     /**
      * 创建订单信息

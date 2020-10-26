@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.seckill.agent.mapper.SeckillUserMapper">
-	<resultMap id="UserInfoMap" type="com.seckill.agent.entity.SeckillUser">
+	<resultMap id="BaseResultMap" type="com.seckill.agent.model.SeckillUser">
 		<result column="id" property="id" />
+		<result column="mobile" property="mobile" />
 		<result column="nickname" property="nickname" />
 		<result column="salt" property="salt" />
 		<result column="head" property="head" />

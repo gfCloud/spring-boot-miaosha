@@ -24,7 +24,7 @@
     </select>
 
     <insert id="createOrder" parameterType="com.seckill.agent.entity.OrderInfo">
-        <selectKey keyColumn="id" resultType="Long" keyProperty="id" order="AFTER">
+        <selectKey keyColumn="id" resultType="Integer" keyProperty="id" order="AFTER">
             select LAST_INSERT_ID()
         </selectKey>
         INSERT order_info(user_id, goods_id, deliverry_addr_id, goods_name, goods_count, goods_price, order_channel,

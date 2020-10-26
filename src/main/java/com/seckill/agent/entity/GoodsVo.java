@@ -10,7 +10,7 @@ import java.util.Date;
  * */
 
 @Data
-@EqualsAndHashCode(callSuper = false)
+@EqualsAndHashCode(callSuper = true)
 public class GoodsVo extends Goods {
 	private Double secondKillPrice;
 	private Integer stockCount;

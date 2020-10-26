@@ -1,6 +1,6 @@
 package com.seckill.agent.controller;
 
-import com.seckill.agent.entity.SeckillUser;
+import com.seckill.agent.model.SeckillUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

@@ -12,7 +12,7 @@ public class SeckillUserRespDTO {
     private Integer id;
     @NotBlank(message = "手机号不能为空")
     @IsMobile
-    private Long mobile;
+    private String mobile;
     private String nickname;
     @NotBlank(message = "密码不能为空")
     @Length(min = 6, message = "密码长度错误")

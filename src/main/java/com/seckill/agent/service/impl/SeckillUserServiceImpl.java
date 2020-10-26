@@ -16,6 +16,7 @@ import com.seckill.agent.until.UUIDUntil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
+import tk.mybatis.mapper.entity.Example;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -41,10 +42,13 @@ public class SeckillUserServiceImpl  extends CommonServiceImpl<SeckillUser, Long
     }
 
     @Override
-    public LoginRespDTO getByMobile(Long mobile) {
+    public LoginRespDTO getByMobile(String mobile) {
         LoginRespDTO respDTO = new LoginRespDTO();
-        SeckillUser seckillUser = seckilluserMapper.selectByPrimaryKey(mobile);
+        Example example = new Example(SeckillUser.class);
+        example.createCriteria().andEqualTo("mobile", mobile);
+        SeckillUser seckillUser = seckilluserMapper.selectOneByExample(example);
         BeanUtils.copyPropertiesIgnoreNull(seckillUser,respDTO);
+        respDTO.setName(seckillUser.getNickname());
         return respDTO;
     }
 
@@ -53,7 +57,7 @@ public class SeckillUserServiceImpl  extends CommonServiceImpl<SeckillUser, Long
         if (loginUser == null) {
             throw new GlobalException(CodeMsg.SERVER_ERROR);
         }
-        Long mobile = loginUser.getMobile();
+        String mobile = loginUser.getMobile();
         String fromPass = loginUser.getPassword();
         LoginRespDTO users = getByMobile(mobile);
         if (users == null) {

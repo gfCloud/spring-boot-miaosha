@@ -13,8 +13,7 @@ import lombok.Data;
 @Data
 public class LoginRespDTO {
 
-    private Integer id;
-    private Long mobile;
+    private String mobile;
     private String name;
     private String password;
     private String salt;

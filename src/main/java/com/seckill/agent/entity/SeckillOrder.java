@@ -7,8 +7,8 @@ import lombok.Data;
  * */
 @Data
 public class SeckillOrder {
-	private Long id;
+	private Integer id;
 	private Integer userId;
-	private Long orderId;
-	private Long goodsId;
+	private Integer orderId;
+	private Integer goodsId;
 }

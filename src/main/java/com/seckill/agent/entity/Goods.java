@@ -7,7 +7,7 @@ import lombok.Data;
  * */
 @Data
 public class Goods {
-	private Long id;
+	private Integer id;
 	private String goodsName;
 	private String goodsTitle;
 	private String goodsImg;

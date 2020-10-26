@@ -1,7 +1,7 @@
 package com.seckill.agent.controller;
 
 import com.seckill.agent.entity.GoodsVo;
-import com.seckill.agent.entity.SeckillUser;
+import com.seckill.agent.model.SeckillUser;
 import com.seckill.agent.service.GoodsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

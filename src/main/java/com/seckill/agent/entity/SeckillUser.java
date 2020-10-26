@@ -2,7 +2,6 @@ package com.seckill.agent.entity;
 
 import com.seckill.agent.validator.IsMobile;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.NotBlank;
@@ -12,12 +11,11 @@ import java.util.Date;
  * @author lr-qixin
  **/
 @Data
-@EqualsAndHashCode(callSuper = false)
-public class SeckillUser extends com.seckill.agent.model.SeckillUser {
+public class SeckillUser {
     private Integer id;
     @NotBlank(message = "手机号不能为空")
     @IsMobile
-    private Long mobile;
+    private String mobile;
     private String nickname;
     @NotBlank(message = "密码不能为空")
     @Length(min = 6, message = "密码长度错误")

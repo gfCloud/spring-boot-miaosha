@@ -57,7 +57,7 @@ public class OrderServiceImpl implements OrderService {
         //生成订单单号
         orderinfo.setOrderNo(OrderNoUtils.getOrderCode(user.getId()));
         //创建订单
-        Long orderId = orderMapper.createOrder(orderinfo);
+        int orderId = orderMapper.createOrder(orderinfo);
         orderinfo.setId(orderId);
         SeckillOrder seckillOrder = new SeckillOrder();
         seckillOrder.setOrderId(orderId);

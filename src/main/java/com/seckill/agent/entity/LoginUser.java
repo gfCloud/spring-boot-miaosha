@@ -6,12 +6,7 @@ import lombok.Data;
 public class LoginUser {
 
 	private Integer id;
-	private Long mobile;
+	private String mobile;
 	private String password;
-
-	@Override
-	public String toString() {
-		return "login [mobile=" + mobile + ", password=" + password + "]";
-	}
 
 }

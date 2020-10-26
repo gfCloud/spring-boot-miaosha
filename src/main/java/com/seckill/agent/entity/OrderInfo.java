@@ -9,7 +9,7 @@ import java.util.Date;
  * */
 @Data
 public class OrderInfo {
-    private Long id;
+    private Integer id;
     /**
      * 订单单号
      */
@@ -21,7 +21,7 @@ public class OrderInfo {
     /**
      * 商品id
      */
-    private Long goodsId;
+    private Integer goodsId;
     /**
      * 收货地址id
      */

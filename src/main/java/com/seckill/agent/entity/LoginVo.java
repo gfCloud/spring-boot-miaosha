@@ -9,7 +9,7 @@ import lombok.Data;
 public class LoginVo {
 
 	private Integer id;
-	private Long mobile;
+	private String mobile;
 	private String name;
 
 }

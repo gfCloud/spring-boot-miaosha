@@ -21,7 +21,7 @@ public interface SeckillUserService extends ICommonService<SeckillUser, Long> {
 	 * @param mobile 用户手机
 	 * @return 用户信息
 	 */
-	LoginRespDTO getByMobile(Long mobile);
+	LoginRespDTO getByMobile(String mobile);
 
 	/**
 	 * 用户登录
