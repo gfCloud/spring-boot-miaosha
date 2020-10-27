@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.seckill.agent.mapper.OrderMapper">
-    <resultMap id="GoodsVo" type="com.seckill.agent.entity.SeckillOrder">
-        <result column="user_id" property="userld"/>
-        <result column="id" property="orderid"/>
-        <result column="goods_id" property="goodsld"/>
+    <resultMap id="BaseResultMap" type="com.seckill.agent.model.SeckillOrder">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="user_id" jdbcType="INTEGER" property="userId" />
+        <result column="order_id" jdbcType="INTEGER" property="orderId" />
+        <result column="goods_id" jdbcType="INTEGER" property="goodsId" />
     </resultMap>
 
-    <select id="getMiaoshaOrderByUserIdGoodsId" resultType="com.seckill.agent.entity.SeckillOrder">
+    <select id="getSeckillOrderByUserIdGoodsId" resultType="com.seckill.agent.dto.resp.SeckillOrderRespDTO">
         SELECT a.id,
                a.user_id,
                a.goods_id,

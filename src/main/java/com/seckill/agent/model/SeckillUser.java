@@ -46,7 +46,7 @@ public class SeckillUser{
     /**z
      * 注册时间
      */
-    @Column(name = "head")
+    @Column(name = "register_date")
     private Date registerDate;
 
     /**

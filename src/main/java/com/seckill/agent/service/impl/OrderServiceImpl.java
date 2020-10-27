@@ -1,10 +1,12 @@
 package com.seckill.agent.service.impl;
 
+import com.seckill.agent.common.service.impl.CommonServiceImpl;
+import com.seckill.agent.dto.resp.SeckillOrderRespDTO;
 import com.seckill.agent.entity.GoodsVo;
-import com.seckill.agent.entity.SeckillOrder;
-import com.seckill.agent.entity.SeckillUser;
 import com.seckill.agent.entity.OrderInfo;
+import com.seckill.agent.entity.SeckillUser;
 import com.seckill.agent.mapper.OrderMapper;
+import com.seckill.agent.model.SeckillOrder;
 import com.seckill.agent.service.OrderService;
 import com.seckill.agent.until.OrderNoUtils;
 import com.seckill.agent.until.OrderStatus;
@@ -25,7 +27,7 @@ import java.util.Date;
  **/
 @Slf4j
 @Service
-public class OrderServiceImpl implements OrderService {
+public class OrderServiceImpl extends CommonServiceImpl<SeckillOrder, Long> implements OrderService {
 
     private final OrderMapper orderMapper;
 
@@ -35,7 +37,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public SeckillOrder getSeckillOrderByUserIdGoodsId(long id, long goodsId) {
+    public SeckillOrderRespDTO getSeckillOrderByUserIdGoodsId(long id, long goodsId) {
         return orderMapper.getSeckillOrderByUserIdGoodsId(id, goodsId);
     }
 

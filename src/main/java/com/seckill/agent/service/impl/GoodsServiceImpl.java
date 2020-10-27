@@ -2,14 +2,18 @@ package com.seckill.agent.service.impl;
 
 import com.seckill.agent.common.service.impl.CommonServiceImpl;
 import com.seckill.agent.entity.GoodsVo;
+import com.seckill.agent.entity.OrderInfo;
+import com.seckill.agent.entity.SeckillUser;
 import com.seckill.agent.mapper.GoodsMapper;
 import com.seckill.agent.model.SeckillGoods;
 import com.seckill.agent.service.GoodsService;
-import com.seckill.agent.until.BeanUtils;
+import com.seckill.agent.service.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -22,31 +26,35 @@ import java.util.List;
 @Service
 public class GoodsServiceImpl extends CommonServiceImpl<SeckillGoods, Long> implements GoodsService {
 	
-	private final GoodsMapper goodsmapper;
+	private final GoodsMapper goodsMapper;
+	private final OrderService orderService;
 
 	@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-	public GoodsServiceImpl(GoodsMapper goodsmapper) {
-		this.goodsmapper = goodsmapper;
+	public GoodsServiceImpl(GoodsMapper goodsMapper, OrderService orderService) {
+		this.goodsMapper = goodsMapper;
+		this.orderService = orderService;
 	}
 
 	@Override
 	public List<GoodsVo> goodsList() {
-		return goodsmapper.listGoodsVo();
+		return goodsMapper.listGoodsVo();
 	}
 
 	@Override
 	public GoodsVo getGoodsVoByGoodsId(long goodsId) {
-		return goodsmapper.getGoodsVoByGoodsId(goodsId);
+		return goodsMapper.getGoodsVoByGoodsId(goodsId);
 	}
 
-	/*@Override
-	public void reduceStock(GoodsVo goods) {
+	@Override
+	@Transactional(rollbackFor = Exception.class)
+	public OrderInfo getSeckill(SeckillUser user, GoodsVo goods, HttpServletRequest request) {
 		SeckillGoods seckillGoods = new SeckillGoods();
 		Example example = new Example(SeckillGoods.class);
 		example.createCriteria().andEqualTo("goodsId", goods.getId());
 		seckillGoods.setStockCount(goods.getStockCount() - 1);
-		goodsmapper.updateByExampleSelective(seckillGoods,example);
-	}*/
+		goodsMapper.updateByExampleSelective(seckillGoods, example);
+		return orderService.createOrder(user,goods, request);
+	}
 
 
 }

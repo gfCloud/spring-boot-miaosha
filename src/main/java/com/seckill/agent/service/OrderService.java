@@ -1,9 +1,11 @@
 package com.seckill.agent.service;
 
+import com.seckill.agent.common.service.ICommonService;
+import com.seckill.agent.dto.resp.SeckillOrderRespDTO;
 import com.seckill.agent.entity.GoodsVo;
-import com.seckill.agent.entity.SeckillOrder;
-import com.seckill.agent.entity.SeckillUser;
 import com.seckill.agent.entity.OrderInfo;
+import com.seckill.agent.entity.SeckillUser;
+import com.seckill.agent.model.SeckillOrder;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -14,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author qiXin
  * @date 2020/10/09
  **/
-public interface OrderService {
+public interface OrderService extends ICommonService<SeckillOrder, Long> {
 
     /**
      * 查询商品是否被当前用户秒杀到
@@ -22,7 +24,7 @@ public interface OrderService {
      * @param goodsId 商品id
      * @return goods列表
      */
-    SeckillOrder getSeckillOrderByUserIdGoodsId(long id, long goodsId);
+    SeckillOrderRespDTO getSeckillOrderByUserIdGoodsId(long id, long goodsId);
 
     /**
      *  生成订单
