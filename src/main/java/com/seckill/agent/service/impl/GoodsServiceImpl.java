@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
@@ -25,7 +26,7 @@ import java.util.List;
 @Slf4j
 @Service
 public class GoodsServiceImpl extends CommonServiceImpl<SeckillGoods, Long> implements GoodsService {
-	
+
 	private final GoodsMapper goodsMapper;
 	private final OrderService orderService;
 
