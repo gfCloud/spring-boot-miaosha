@@ -1,6 +1,3 @@
-/*
- * Copyright  2020 www.manniuhealth.com. All rights reserved.
- */
 package com.seckill.agent.job;
 
 import com.xxl.job.core.biz.model.ReturnT;
