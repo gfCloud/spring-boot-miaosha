@@ -28,14 +28,11 @@ import java.util.Date;
  **/
 @Slf4j
 @Service
-public class OrderServiceImpl extends CommonServiceImpl<SeckillOrder, Long> implements OrderService {
+public class OrderServiceImpl extends CommonServiceImpl<OrderMapper,SeckillOrder> implements OrderService {
 
-    private final OrderMapper orderMapper;
+    @Resource
+    private OrderMapper orderMapper;
 
-    @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-    public OrderServiceImpl(OrderMapper orderMapper) {
-        this.orderMapper = orderMapper;
-    }
 
     @Override
     public SeckillOrderRespDTO getSeckillOrderByUserIdGoodsId(long id, long goodsId) {

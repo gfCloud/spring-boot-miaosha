@@ -10,7 +10,7 @@ import tk.mybatis.spring.annotation.MapperScan;
  */
 @SpringBootApplication
 @ServletComponentScan
-@MapperScan(basePackages = {"com.seckill.agent.mapper","com.seckill.agent.common.mapper"})
+@MapperScan(basePackages = {"com.seckill.agent.mapper"})
 public class AppMain {
 	public static void main(String[] args) {
 		  SpringApplication.run(AppMain.class,args);

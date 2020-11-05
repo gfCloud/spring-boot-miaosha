@@ -15,7 +15,7 @@ import java.util.List;
  * @author qiXin
  * @date 2020/9/23
  **/
-public interface GoodsService extends ICommonService<SeckillGoods, Long> {
+public interface GoodsService extends ICommonService<SeckillGoods> {
 
     /**
      * 查询goods列表

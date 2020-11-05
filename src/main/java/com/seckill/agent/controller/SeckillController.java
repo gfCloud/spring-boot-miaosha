@@ -7,7 +7,6 @@ import com.seckill.agent.entity.SeckillUser;
 import com.seckill.agent.result.CodeMsg;
 import com.seckill.agent.service.GoodsService;
 import com.seckill.agent.service.OrderService;
-import com.seckill.agent.service.SeckillService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,12 +27,9 @@ public class SeckillController {
 
     private final OrderService orderService;
 
-    private final SeckillService seckillService;
-
-    public SeckillController(GoodsService goodsService, OrderService orderService, SeckillService seckillService) {
+    public SeckillController(GoodsService goodsService, OrderService orderService) {
         this.goodsService = goodsService;
         this.orderService = orderService;
-        this.seckillService = seckillService;
     }
 
 

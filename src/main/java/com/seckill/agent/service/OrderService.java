@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
  * @author qiXin
  * @date 2020/10/09
  **/
-public interface OrderService extends ICommonService<SeckillOrder, Long> {
+public interface OrderService extends ICommonService<SeckillOrder> {
 
     /**
      * 查询商品是否被当前用户秒杀到

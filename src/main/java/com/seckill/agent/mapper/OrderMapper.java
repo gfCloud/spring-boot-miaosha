@@ -1,18 +1,16 @@
 package com.seckill.agent.mapper;
 
-import com.seckill.agent.common.mapper.MyMapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.seckill.agent.dto.resp.SeckillOrderRespDTO;
 import com.seckill.agent.entity.OrderInfo;
 import com.seckill.agent.model.SeckillOrder;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 /**
  * @author qixin
  * 订单
  */
-@Mapper
-public interface OrderMapper extends MyMapper<SeckillOrder> {
+public interface OrderMapper extends BaseMapper<SeckillOrder> {
 
     /**
      * 查询商品是否已被当前用户秒杀过

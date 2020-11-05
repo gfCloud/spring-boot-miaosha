@@ -1,34 +1,16 @@
 package com.seckill.agent.controller;
 
-import java.util.Calendar;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import org.springframework.boot.autoconfigure.jersey.JerseyProperties.Servlet;
+
+import java.text.ParseException;
 
 public class test extends Servlet {
 
-	public static void main(String[] args) {
-
-		Calendar cal = Calendar.getInstance();
-		// 每天定bai点du执行zhi
-		cal.set(Calendar.HOUR_OF_DAY, 12);
-		cal.set(Calendar.MINUTE, 0);
-		cal.set(Calendar.SECOND, 0);
-		Timer timer = new Timer();
-		timer.schedule(new TimerTask() {
-			public void run() {
-				System.out.println("定时器测试！");
-			}
-		}, cal.getTime(), 24 * 60 * 60 * 1000);
-
-
-		timer.scheduleAtFixedRate(new TimerTask() {
-			public void run() {
-				System.err.println("-------延迟5000毫秒，每1000毫秒执行一次--------");
-			}
-		}, 5000, 1000);
-
+	public static void main(String[] args) throws ParseException {
+		String secret = "puY0ExuOi86swFwD";
+		String appId = "83345470-0fef-4e43-9a0f-8f76e3806275";
+		String token = java.util.Base64.getEncoder().encodeToString((appId + ":" + secret).getBytes());
+		System.out.println("token = " + token);
 	}
 
 }

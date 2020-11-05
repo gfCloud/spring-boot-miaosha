@@ -25,16 +25,12 @@ import java.util.List;
  **/
 @Slf4j
 @Service
-public class GoodsServiceImpl extends CommonServiceImpl<SeckillGoods, Long> implements GoodsService {
+public class GoodsServiceImpl extends CommonServiceImpl<GoodsMapper,SeckillGoods> implements GoodsService {
 
-	private final GoodsMapper goodsMapper;
-	private final OrderService orderService;
-
-	@SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-	public GoodsServiceImpl(GoodsMapper goodsMapper, OrderService orderService) {
-		this.goodsMapper = goodsMapper;
-		this.orderService = orderService;
-	}
+	@Resource
+	private GoodsMapper goodsMapper;
+	@Resource
+	private OrderService orderService;
 
 	@Override
 	public List<GoodsVo> goodsList() {
@@ -53,7 +49,7 @@ public class GoodsServiceImpl extends CommonServiceImpl<SeckillGoods, Long> impl
 		Example example = new Example(SeckillGoods.class);
 		example.createCriteria().andEqualTo("goodsId", goods.getId());
 		seckillGoods.setStockCount(goods.getStockCount() - 1);
-		goodsMapper.updateByExampleSelective(seckillGoods, example);
+//		goodsMapper.updateByExampleSelective(seckillGoods, example);
 		return orderService.createOrder(user,goods, request);
 	}
 

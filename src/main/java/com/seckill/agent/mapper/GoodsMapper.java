@@ -1,9 +1,8 @@
 package com.seckill.agent.mapper;
 
-import com.seckill.agent.common.mapper.MyMapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.seckill.agent.entity.GoodsVo;
 import com.seckill.agent.model.SeckillGoods;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -12,8 +11,7 @@ import java.util.List;
  * @author qixin
  * 商品查询
  */
-@Mapper
-public interface GoodsMapper extends MyMapper<SeckillGoods> {
+public interface GoodsMapper extends BaseMapper<SeckillGoods> {
 
     /**
      * 查询商品列表

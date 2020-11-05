@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author qiXin
  * @date 2020/9/23
  **/
-public interface SeckillUserService extends ICommonService<SeckillUser, Long> {
+public interface SeckillUserService extends ICommonService<SeckillUser> {
 
 	/**
 	 * 根据用户ID查询信息

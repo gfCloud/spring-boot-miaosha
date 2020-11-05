@@ -1,5 +1,6 @@
 package com.seckill.agent.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.seckill.agent.common.service.impl.CommonServiceImpl;
 import com.seckill.agent.dto.resp.LoginRespDTO;
 import com.seckill.agent.entity.LoginUser;
@@ -16,7 +17,6 @@ import com.seckill.agent.until.UUIDUntil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
-import tk.mybatis.mapper.entity.Example;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
@@ -29,24 +29,25 @@ import javax.servlet.http.HttpServletResponse;
  **/
 @Slf4j
 @Service
-public class SeckillUserServiceImpl  extends CommonServiceImpl<SeckillUser, Long> implements SeckillUserService {
+public class SeckillUserServiceImpl  extends CommonServiceImpl<SeckillUserMapper,SeckillUser> implements SeckillUserService {
     private static final String COOKIE_NAME_TOKEN = "token";
 
-    private final SeckillUserMapper seckilluserMapper;
+    private final SeckillUserMapper seckillUserMapper;
     private final RedisService redisservice;
 
     @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
-    public SeckillUserServiceImpl(SeckillUserMapper seckilluserMapper, RedisService redisservice) {
-        this.seckilluserMapper = seckilluserMapper;
+    public SeckillUserServiceImpl(SeckillUserMapper seckillUserMapper, RedisService redisservice) {
+        this.seckillUserMapper = seckillUserMapper;
         this.redisservice = redisservice;
     }
+
 
     @Override
     public LoginRespDTO getByMobile(String mobile) {
         LoginRespDTO respDTO = new LoginRespDTO();
-        Example example = new Example(SeckillUser.class);
-        example.createCriteria().andEqualTo("mobile", mobile);
-        SeckillUser seckillUser = seckilluserMapper.selectOneByExample(example);
+        QueryWrapper queryWrapper = new QueryWrapper();
+        queryWrapper.eq("mobile", mobile);
+        SeckillUser seckillUser = seckillUserMapper.selectOne(queryWrapper);
         BeanUtils.copyPropertiesIgnoreNull(seckillUser,respDTO);
         respDTO.setName(seckillUser.getNickname());
         return respDTO;
