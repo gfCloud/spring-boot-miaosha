@@ -64,11 +64,12 @@ xxl:
   job:
     accessToken: ''
     admin:
-      addresses: http://10.3.97.32:8088/xxl-job-admin
+      addresses: http://127.0.0.1:8088/xxl-job-admin
     executor:
       address: ''
-      appname: springboot-xxl-executor
-      ip: 10.3.97.32
+      appname: xxl-job-executor-sample
+      ip: ''
       logpath: /data/applogs/xxl-job/jobhandler
       logretentiondays: 30
       port: 9999
+
