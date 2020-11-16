@@ -11,7 +11,7 @@ import com.seckill.agent.redis.RedisService;
 import com.seckill.agent.redis.SeckillUserKey;
 import com.seckill.agent.result.CodeMsg;
 import com.seckill.agent.service.SeckillUserService;
-import com.seckill.agent.until.BeanUtils;
+import com.seckill.agent.until.BeanUtil;
 import com.seckill.agent.until.MD5Until;
 import com.seckill.agent.until.UUIDUntil;
 import lombok.extern.slf4j.Slf4j;
@@ -48,7 +48,7 @@ public class SeckillUserServiceImpl  extends CommonServiceImpl<SeckillUserMapper
         QueryWrapper queryWrapper = new QueryWrapper();
         queryWrapper.eq("mobile", mobile);
         SeckillUser seckillUser = seckillUserMapper.selectOne(queryWrapper);
-        BeanUtils.copyPropertiesIgnoreNull(seckillUser,respDTO);
+        BeanUtil.copyPropertiesIgnoreNull(seckillUser,respDTO);
         respDTO.setName(seckillUser.getNickname());
         return respDTO;
     }
