@@ -45,7 +45,7 @@ public class SeckillUserServiceImpl  extends CommonServiceImpl<SeckillUserMapper
     @Override
     public LoginRespDTO getByMobile(String mobile) {
         LoginRespDTO respDTO = new LoginRespDTO();
-        QueryWrapper queryWrapper = new QueryWrapper();
+        QueryWrapper<SeckillUser> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("mobile", mobile);
         SeckillUser seckillUser = seckillUserMapper.selectOne(queryWrapper);
         BeanUtil.copyPropertiesIgnoreNull(seckillUser,respDTO);
