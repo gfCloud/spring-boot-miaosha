@@ -19,5 +19,7 @@ public class GoodsVo{
 	private Integer status;
 	private Integer seconds;
 	private String goodsName;
+	private String goodsImg;
+	private String goodsPrice;
 	private Integer goodsStock;
 }
