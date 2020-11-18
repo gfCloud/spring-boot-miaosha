@@ -1,4 +1,4 @@
-package com.seckill.agent.until;
+package com.seckill.agent.constant;
 
 /**
  * 测试枚举类

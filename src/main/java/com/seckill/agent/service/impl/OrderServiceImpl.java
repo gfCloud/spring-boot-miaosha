@@ -9,7 +9,7 @@ import com.seckill.agent.mapper.OrderMapper;
 import com.seckill.agent.model.SeckillOrder;
 import com.seckill.agent.service.OrderService;
 import com.seckill.agent.until.OrderNoUtils;
-import com.seckill.agent.until.OrderStatus;
+import com.seckill.agent.constant.OrderStatus;
 import com.seckill.agent.until.UserAgentUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
